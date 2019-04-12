@@ -1,0 +1,6 @@
+# reload with xbindkeys -p
+# find key names with xev
+
+# Paste last selection with mouse button
+"xdotool key Shift+Insert"
+b:8

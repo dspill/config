@@ -1,0 +1,6 @@
+! get keycodes with xev
+! Load file with xmodmap ~/.Xmodmap
+
+! map Caps_Lock (66) to Escape
+clear lock
+keycode 66 = Escape

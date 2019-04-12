@@ -1,0 +1,6 @@
+set show-all-if-ambiguous on
+
+# distinguish between insert and cmd mode in vi input
+set show-mode-in-prompt on
+set vi-ins-mode-string "+"
+set vi-cmd-mode-string ":"
