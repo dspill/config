@@ -16,9 +16,16 @@
 !.xdark
 !.xlight
 
+!.config
+!.config/matplotlib
+!.config/matplotlib/matplotlibrc
+!.config/matplotlib/stylelib
+!.config/matplotlib/stylelib/*.mplstyle
+
 !.i3
 !.i3/config
 !.i3/i3blocks.conf
+
 
 !.vim
 !.vim/ftplugin
