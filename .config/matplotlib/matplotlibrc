@@ -204,6 +204,7 @@ backend      : TkAgg
 # relative to font.size, using the following values: xx-small, x-small,
 # small, medium, large, x-large, xx-large, larger, or smaller
 #font.size           : 10.0
+font.size           : 10.0
 #font.serif          : DejaVu Serif, Bitstream Vera Serif, New Century Schoolbook, Century Schoolbook L, Utopia, ITC Bookman, Bookman, Nimbus Roman No9 L, Times New Roman, Times, Palatino, Charter, serif
 #font.sans-serif     : DejaVu Sans, Bitstream Vera Sans, Lucida Grande, Verdana, Geneva, Lucid, Arial, Helvetica, Avant Garde, sans-serif
 #font.cursive        : Apple Chancery, Textile, Zapf Chancery, Sand, Script MT, Felipa, cursive
@@ -299,6 +300,7 @@ backend      : TkAgg
 #axes.titlesize      : large   # fontsize of the axes title
 #axes.titlepad       : 6.0     # pad between axes and title in points
 #axes.labelsize      : medium  # fontsize of the x any y labels
+axes.labelsize      : 10  # fontsize of the x any y labels
 #axes.labelpad       : 4.0     # space between label and axis
 #axes.labelweight    : normal  # weight of the x and y labels
 #axes.labelcolor     : black
