@@ -59,6 +59,8 @@ let g:vimtex_quickfix_warnings = {
 let maplocalleader="\\"
 let g:tex_conceal = ""
 
+let g:vimtex_indent_on_ampersands="0"
+
 " neocomplete with vimtex {{{2
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
