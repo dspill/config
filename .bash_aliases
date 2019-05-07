@@ -42,3 +42,5 @@ alias mathematica='/sw/linux/Mathematica/8.0/scripts/mathematica'
 alias dvim="vim -c 'colorscheme default'"
 
 alias matlap="/sw/linux/MATLAB_R2017a/bin/matlab"
+
+alias gcam="git commit -am "
