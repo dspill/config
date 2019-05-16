@@ -33,17 +33,17 @@ let g:vimtex_fold_enabled=1
 let g:vimtex_fold_comments=1
 
 let  g:vimtex_fold_types = {
-      \ 'preamble' : {'enabled' : 0}
-      \ }
+            \ 'preamble' : {'enabled' : 0}
+            \ }
 
 let g:vimtex_quickfix_mode=0
 "let g:vimtex_quickfix_autojump=1
 let g:vimtex_quickfix_open_on_warning=0
 let g:vimtex_quickfix_warnings = {
-      \ 'overfull' : 0,
-      \ 'underfull' : 0,
-      \ 'packages' : {'default' : 0},
-      \}
+            \ 'overfull' : 0,
+            \ 'underfull' : 0,
+            \ 'packages' : {'default' : 0},
+            \}
 "let g:vimtex_quickfix_ignored_warnings = [
 "\ 'Underfull',
 "\ 'Overfull',
@@ -61,35 +61,47 @@ let g:tex_conceal = ""
 
 let g:vimtex_indent_on_ampersands="0"
 
-" neocomplete with vimtex {{{2
+" completion
+if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
+
 if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
+    let g:neocomplete#sources#omni#input_patterns = {}
 endif
 let g:neocomplete#sources#omni#input_patterns.tex =
-      \ '\v\\%('
-      \ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-      \ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
-      \ . '|hyperref\s*\[[^]]*'
-      \ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-      \ . '|%(include%(only)?|input)\s*\{[^}]*'
-      \ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-      \ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
-      \ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
-      \ . ')'
+            \ '\v\\%('
+            \ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+            \ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
+            \ . '|hyperref\s*\[[^]]*'
+            \ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+            \ . '|%(include%(only)?|input)\s*\{[^}]*'
+            \ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+            \ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
+            \ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
+            \ . ')'
 
 " custom mappings {{{1
 call vimtex#imaps#add_map({
-      \ 'lhs' : '^',
-      \ 'rhs' : '^{',
-      \ 'leader' : '`',
-      \ 'wrapper' : 'vimtex#imaps#wrap_math'
-      \})
+            \ 'lhs' : '^',
+            \ 'rhs' : '^{',
+            \ 'leader' : '`',
+            \ 'wrapper' : 'vimtex#imaps#wrap_math'
+            \})
 
 call vimtex#imaps#add_map({
-      \ 'lhs' : '_',
-      \ 'rhs' : '_{',
-      \ 'leader' : '`',
-      \ 'wrapper' : 'vimtex#imaps#wrap_math'
-      \})
+            \ 'lhs' : '_',
+            \ 'rhs' : '_{',
+            \ 'leader' : '`',
+            \ 'wrapper' : 'vimtex#imaps#wrap_math'
+            \})
+
+call vimtex#imaps#add_map({
+            \ 'lhs' : '/',
+            \ 'rhs' : '\frac{',
+            \ 'leader' : '`',
+            \ 'wrapper' : 'vimtex#imaps#wrap_math'
+            \})
 
 nnoremap <buffer> <leader>co :copen<cr>G
