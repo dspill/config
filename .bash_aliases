@@ -44,3 +44,5 @@ alias dvim="vim -c 'colorscheme default'"
 alias matlap="/sw/linux/MATLAB_R2017a/bin/matlab"
 
 alias gcam="git commit -am "
+
+alias jnfo="scontrol show job"
