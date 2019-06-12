@@ -64,8 +64,7 @@ EPSLATEXBIG='set terminal epslatex size 2.5,2.4 color colortext dashed clip\
 
 
 #set term wxt persist
-#set term wxt persist
-@WXT
+#@WXT
 #@QT
 
 #{{{1 Paths

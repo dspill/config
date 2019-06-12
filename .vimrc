@@ -19,6 +19,10 @@ Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'lervag/vimtex'
 "Plugin 'WolfgangMehner/c-support'
 
+"Plugin 'python-mode/python-mode'
+"let g:pymode_lint_on_write = 0
+"let g:pymode_lint = 0
+
 " Solarized {{{2
 Plugin 'altercation/vim-colors-solarized'
 
@@ -163,7 +167,7 @@ if has('lua')
     autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
     autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
     " TODO slow with pymode:
-    "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
     " Enable heavy omni completion.
@@ -233,12 +237,13 @@ set autowrite
 set spell spelllang=en_us
 set nospell
 
-" textwidth for automatic linewrap. disable: :set fo-=t
+" textwidth for automatic linewrap. disable with: :set fo-=t
 set textwidth=79
 set formatoptions=tcq
 set colorcolumn=79
 
 " backup options
+set backup
 set directory=~/.backup/vim/swap//,./,/tmp//
 set backupdir=~/.backup/vim/backup//,./,/tmp//
 set undodir=~/.backup/vim/undo//,./,/tmp//
