@@ -317,7 +317,7 @@ client.urgent                   $baseB0 $yellow $baseB3 $yellow
         ##urgent_workspace               $orange $orange $baseB3
         #urgent_workspace               $yellow $yellow $baseB3
     #}
-    #status_command i3blocks -c ~/.i3/i3blocks.conf
+    #status_command /home/theorie/spiller/local/bin/i3blocks -c ~/.i3/i3blocks.conf
 #}
 bar {
     colors {
