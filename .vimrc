@@ -68,6 +68,7 @@ let g:syntastic_check_on_wq = 1
 "
 " Python
 let g:syntastic_python_checkers = ["python"]
+let g:syntastic_python_python_exec = '/usr/bin/env python3'
 
 " Folding {{{2
 Plugin 'Konfekt/FastFold'

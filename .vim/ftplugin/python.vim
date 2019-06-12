@@ -5,7 +5,7 @@ set foldlevel=99
 
 "nnoremap <buffer> "" :w <BAR> !clear && mpirun -n $(nproc) python %:p<CR>
 "nnoremap <buffer> "" :w <BAR> !mpirun -n $(nproc) python %:p<CR>
-nnoremap <buffer> "" :w <BAR> !python %:p<CR>
+nnoremap <buffer> "" :w <BAR> !python3 %:p<CR>
 
 " old pymode settings
 "dont show error if line too long
