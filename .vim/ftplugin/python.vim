@@ -1,6 +1,5 @@
 setlocal fo-=t
-"setlocal fdm=marker
-set foldmethod=indent
+setlocal foldmethod=indent
 set foldlevel=99
 
 "nnoremap <buffer> "" :w <BAR> !clear && mpirun -n $(nproc) python %:p<CR>
