@@ -19,6 +19,10 @@ Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'lervag/vimtex'
 "Plugin 'WolfgangMehner/c-support'
 
+"Plugin 'python-mode/python-mode'
+"let g:pymode_lint_on_write = 0
+"let g:pymode_lint = 0
+
 " Solarized {{{2
 Plugin 'altercation/vim-colors-solarized'
 
@@ -54,7 +58,7 @@ let g:syntastic_mode_map = { 'mode': 'active',
 "\ "type":    "style",
 "\ "regex":   '\m\[C03\d\d\]',
 "\ "file:p":  ['\m^/usr/include/', '\m\c\.h$'] }
-let g:syntastic_quiet_messages = {
+let g:syntastic_tex_quiet_messages = {
             \ "regex": ['You should enclose the previous', 'You should perhaps use'],
             \ "file":  ['preamble.*\.tex']}
 
@@ -67,8 +71,11 @@ let g:syntastic_check_on_wq = 1
 "let g:syntastic_cpp_checkers = ['clang_check', 'gcc']
 "
 " Python
-let g:syntastic_python_checkers = ["python"]
+let g:syntastic_python_checkers = ["python", "pylint"]
 let g:syntastic_python_python_exec = '/usr/bin/env python3'
+let g:syntastic_python_pylint_quiet_messages = {
+        \ "regex": ['naming style', 'Too many', 'Unable to import', 'docstring', 'continued indentation', 'Exactly one space', 'snake_case', 'invalid name', 'Missing function docstring']
+    \}
 
 " Folding {{{2
 Plugin 'Konfekt/FastFold'
@@ -163,7 +170,7 @@ if has('lua')
     autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
     autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
     " TODO slow with pymode:
-    "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
     " Enable heavy omni completion.
@@ -233,12 +240,13 @@ set autowrite
 set spell spelllang=en_us
 set nospell
 
-" textwidth for automatic linewrap. disable: :set fo-=t
+" textwidth for automatic linewrap. disable with: :set fo-=t
 set textwidth=79
 set formatoptions=tcq
 set colorcolumn=79
 
 " backup options
+set backup
 set directory=~/.backup/vim/swap//,./,/tmp//
 set backupdir=~/.backup/vim/backup//,./,/tmp//
 set undodir=~/.backup/vim/undo//,./,/tmp//

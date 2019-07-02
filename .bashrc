@@ -87,4 +87,4 @@ else
     PS1='[\[\033[0;32m\]\u\[\033[0m\]@\h:\w]\$ '
 fi
 
-module load vmd
+module load fftw-serial/3.3.8

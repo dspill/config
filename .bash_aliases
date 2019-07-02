@@ -27,7 +27,9 @@ alias gaussview='/sw/linux/gaussian/gv/gview'
 
 alias pyrun='mpirun -n $(nproc) python '
 
-alias wq='watch -d -n 3 qstat'
+#alias wq='watch -d -n 3 qstat'
+alias wq='watch -d -n 3 squeue -u $USER'
+
 alias llqe="llq -l -u dspiller | grep '===== Job Step\|Executable'"
 
 alias wt='watch tail -n 5'
