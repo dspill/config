@@ -20,8 +20,8 @@ Plugin 'lervag/vimtex'
 "Plugin 'WolfgangMehner/c-support'
 
 "Plugin 'python-mode/python-mode'
-"let g:pymode_lint_on_write = 0
 "let g:pymode_lint = 0
+"let g:pymode_lint_on_write = 0
 
 " Solarized {{{2
 Plugin 'altercation/vim-colors-solarized'
@@ -48,10 +48,12 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 " General
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_mode_map = { 'mode': 'active', 
-            \'active_filetypes': ["python", "cpp", "tex"],
-            \'passive_filetypes': [] }
+"let g:syntastic_mode_map = { 'mode': 'active', 
+            "\'active_filetypes': ["python", "cpp", "tex"],
+            "\'passive_filetypes': [] }
 "nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 "let g:syntastic_quiet_messages = {
 "\ "!level":  "errors",
@@ -66,15 +68,13 @@ let g:syntastic_tex_quiet_messages = {
 "let g:syntastic_cpp_compiler = 'gcc'
 let g:syntastic_cpp_compiler_options = '-std=c++14 -Wall -Wextra -pedantic -fopenmp'
 let g:syntastic_cpp_check_header = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
 "let g:syntastic_cpp_checkers = ['clang_check', 'gcc']
 "
 " Python
 let g:syntastic_python_checkers = ["python", "pylint"]
 let g:syntastic_python_python_exec = '/usr/bin/env python3'
 let g:syntastic_python_pylint_quiet_messages = {
-        \ "regex": ['naming style', 'Too many', 'Unable to import', 'docstring', 'continued indentation', 'Exactly one space', 'snake_case', 'invalid name', 'Missing function docstring']
+        \ "regex": ['Anomalous backslash', 'naming style', 'Too many', 'Unable to import', 'docstring', 'continued indentation', 'Exactly one space', 'snake_case', 'invalid name', 'Missing function docstring']
     \}
 
 " Folding {{{2
