@@ -71,7 +71,7 @@ let g:syntastic_check_on_wq = 1
 "let g:syntastic_cpp_checkers = ['clang_check', 'gcc']
 "
 " Python
-let g:syntastic_python_checkers = ["python", "pylint"]
+let g:syntastic_python_checkers = ["python", "pylint", "pyflakes"]
 let g:syntastic_python_python_exec = '/usr/bin/env python3'
 let g:syntastic_python_pylint_quiet_messages = {
         \ "regex": ['naming style', 'Too many', 'Unable to import', 'docstring', 'continued indentation', 'Exactly one space', 'snake_case', 'invalid name', 'Missing function docstring']
