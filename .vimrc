@@ -69,6 +69,7 @@ let g:syntastic_tex_quiet_messages = {
 let g:syntastic_cpp_compiler_options = '-std=c++14 -Wall -Wextra -pedantic -fopenmp'
 let g:syntastic_cpp_check_header = 1
 "let g:syntastic_cpp_checkers = ['clang_check', 'gcc']
+let g:syntastic_cpp_checkers = ['gcc']
 "
 " Python
 let g:syntastic_python_checkers = ["python", "pylint", "pyflakes"]

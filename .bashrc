@@ -88,3 +88,4 @@ else
 fi
 
 #module load fftw-serial/3.3.8
+module load anaconda/3
