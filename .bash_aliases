@@ -47,6 +47,8 @@ alias matlap="/sw/linux/MATLAB_R2017a/bin/matlab"
 
 alias gcam="git commit -am "
 
+alias gcamup="git commit -am 'update' && git push"
+
 alias jnfo="scontrol show job"
 
 alias scratch="cd $(print_scratch)"
