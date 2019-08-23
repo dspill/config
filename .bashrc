@@ -87,5 +87,10 @@ else
     PS1='[\[\033[0;32m\]\u\[\033[0m\]@\h:\w]\$ '
 fi
 
-#module load fftw-serial/3.3.8
-module load anaconda/3
+for module in anaconda/3/2019.03 git gnuplot vmd; do 
+    #echo "loading $module"
+    if module avail 2>&1 | grep $module > /dev/null; then
+        #echo "is available"
+        module load $module
+    fi
+done
