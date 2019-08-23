@@ -88,9 +88,7 @@ else
 fi
 
 for module in anaconda/3/2019.03 git gnuplot vmd; do 
-    #echo "loading $module"
     if module avail 2>&1 | grep $module > /dev/null; then
-        #echo "is available"
         module load $module
     fi
 done
