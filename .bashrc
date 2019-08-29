@@ -87,7 +87,7 @@ else
     PS1='[\[\033[0;32m\]\u\[\033[0m\]@\h:\w]\$ '
 fi
 
-for module in anaconda/3/2019.03 git gnuplot vmd; do 
+for module in anaconda/3/5.1 git gnuplot vmd; do 
     #echo "loading $module"
     if module avail 2>&1 | grep $module > /dev/null; then
         #echo "is available"
