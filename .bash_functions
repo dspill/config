@@ -1,5 +1,5 @@
 # vim: ft=sh foldmethod=indent:
-function plot() { 
+function gplot() { 
     #gnuplot -p -e "plot '$1' $2 $3 $4 $5" 2> /dev/null; 
     gnuplot -p -e "plot '$1' $2 $3 $4 $5"; 
 }
