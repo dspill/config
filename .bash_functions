@@ -5,7 +5,8 @@ function gplot() {
 }
 
 function lplot() { 
-    gnuplot -p -e "plot '$1' $2 $3 $4 $5 w linespoints" 2> /dev/null; 
+    #gnuplot -p -e "plot '$1' $2 $3 $4 $5 w linespoints" 2> /dev/null; 
+    gnuplot -p -e "plot '$1' $2 $3 $4 $5 w linespoints" 
 }
 
 function xlogplot() {
