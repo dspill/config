@@ -93,3 +93,13 @@ for module in anaconda/3/5.1 git gnuplot vmd; do
         module load $module
     fi
 done
+
+# {{{1 Unified bash history even with multiple shells in tmux
+# avoid duplicates..
+export HISTCONTROL=ignoredups:erasedups
+
+# append history entries..
+shopt -s histappend
+
+# After each command, save and reload history
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
