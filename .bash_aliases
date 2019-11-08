@@ -51,7 +51,8 @@ alias gcamup="git commit -am 'update' && git push"
 
 alias jnfo="scontrol show job"
 
-alias scratch="cd $(~/scripts/print_scratch.py)"
+alias scratch="PYTHONPATH= cd $(~/scripts/print_scratch.sh)"
+
 
 alias delete_content_of_cwd="perl -e 'for(<*>){((stat)[9]<(unlink))}'"
 
