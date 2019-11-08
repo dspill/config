@@ -76,7 +76,7 @@ let g:syntastic_cpp_include_dir=['lib']
 let g:syntastic_python_checkers = ["python", "pylint", "pyflakes"]
 let g:syntastic_python_python_exec = '/usr/bin/env python3'
 let g:syntastic_python_pylint_quiet_messages = {
-        \ "regex": ['Anomalous backslash', 'naming style', 'Too many', 'Unable to import', 'docstring', 'continued indentation', 'Exactly one space', 'snake_case', 'invalid name', 'Missing function docstring', 'xrange']
+        \ "regex": ['Anomalous backslash', 'naming style', 'Too many', 'Unable to import', 'docstring', 'continued indentation', 'Exactly one space', 'snake_case', 'invalid name', 'Missing function docstring', 'xrange', 'too-few-public-methods']
     \}
 let g:syntastic_python_pyflakes_quiet_messages = {
         \ "regex": ['xrange']
