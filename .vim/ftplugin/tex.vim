@@ -40,10 +40,10 @@ let g:vimtex_quickfix_mode=0
 "let g:vimtex_quickfix_autojump=1
 let g:vimtex_quickfix_open_on_warning=0
 let g:vimtex_quickfix_warnings = {
-            \ 'overfull' : 0,
             \ 'underfull' : 0,
             \ 'packages' : {'default' : 0},
             \}
+
 "let g:vimtex_quickfix_ignored_warnings = [
 "\ 'Underfull',
 "\ 'Overfull',

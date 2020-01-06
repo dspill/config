@@ -238,6 +238,9 @@ filetype indent plugin on
 " Enable syntax highlighting
 syntax enable
 
+" always at least one line visible when scrolling
+set scrolloff=1
+
 " save automatically, i.e. on make
 set autowrite
 

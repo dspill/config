@@ -90,7 +90,7 @@ workspace $w10 output $monitor_2
 # {{{1 Shortcuts
 # use xev to find keycodes
 # {{{2 Custom
-bindsym XF86HomePage exec ~/local/firefox/firefox
+bindsym XF86HomePage exec firefox
 
 # switch monitors
 bindsym $mod+F1 exec ~/local/bin/switch 1
@@ -108,6 +108,9 @@ bindsym $mod+control+Down exec xbacklight -dec 20
 bindsym Control+mod1+q exec sudo shutdown now
 bindsym Control+mod1+r exec sudo shutdown -r now
 bindsym Control+mod1+h exec sudo systemctl hibernate
+
+bindsym Control+mod1+m exec ~/local/bin/reset_dp-1
+bindsym Control+mod1+b exec ~/local/bin/connect_bluetooth
 
 # test
 bindsym XF86Calculator exec ~/scripts/test.sh
@@ -317,7 +320,7 @@ client.urgent                   $baseB0 $yellow $baseB3 $yellow
         ##urgent_workspace               $orange $orange $baseB3
         #urgent_workspace               $yellow $yellow $baseB3
     #}
-    #status_command /home/theorie/spiller/local/bin/i3blocks -c ~/.i3/i3blocks.conf
+    #status_command i3blocks -c ~/.i3/i3blocks.conf
 #}
 bar {
     colors {
@@ -349,7 +352,7 @@ assign[title="Workspace 2"] $w2
     #exec xterm; workspace $w1' 
 
 exec --no-startup-id i3-msg 'workspace $w3; \
-    exec ~/local/firefox/firefox; workspace $w1' 
+    exec firefox; workspace $w1' 
 
 exec --no-startup-id i3-msg 'workspace $w6; \
     exec thunderbird; workspace $w1'
