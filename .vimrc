@@ -63,6 +63,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_tex_quiet_messages = {
             \ "regex": ['You should enclose the previous', 'You should perhaps use'],
             \ "file":  ['preamble.*\.tex']}
+let g:syntastic_tex_chktex_quiet_messages = {
+            \ "regex": ['You should enclose the previous', 'You should perhaps use'],
+            \ "file":  ['preamble.*\.tex']}
 
 " CPP
 "let g:syntastic_cpp_compiler = 'gcc'
