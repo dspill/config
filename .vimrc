@@ -53,14 +53,14 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_mode_map = { 'mode': 'active', 
-            "\'active_filetypes': ["python", "cpp", "tex"],
-            "\'passive_filetypes': [] }
+"\'active_filetypes': ["python", "cpp", "tex"],
+"\'passive_filetypes': [] }
 "nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 "let g:syntastic_quiet_messages = {
-"\ "!level":  "errors",
-"\ "type":    "style",
-"\ "regex":   '\m\[C03\d\d\]',
-"\ "file:p":  ['\m^/usr/include/', '\m\c\.h$'] }
+            "\ "!level":  "errors",
+            "\ "type":    "style",
+            "\ "regex":   '\m\[C03\d\d\]',
+            "\ "file:p":  ['\m^/usr/include/', '\m\c\.h$'] }
 let g:syntastic_tex_quiet_messages = {
             \ "regex": ['You should enclose the previous', 'You should perhaps use'],
             \ "file":  ['preamble.*\.tex']}
@@ -80,11 +80,11 @@ let g:syntastic_cpp_include_dir=['lib']
 let g:syntastic_python_checkers = ["python", "pylint", "pyflakes"]
 let g:syntastic_python_python_exec = '/usr/bin/env python3'
 let g:syntastic_python_pylint_quiet_messages = {
-        \ "regex": ['Anomalous backslash', 'naming style', 'Too many', 'Unable to import', 'docstring', 'continued indentation', 'Exactly one space', 'snake_case', 'invalid name', 'Missing function docstring', 'xrange', 'too-few-public-methods']
-    \}
+            \ "regex": ['Anomalous backslash', 'naming style', 'Too many', 'Unable to import', 'docstring', 'continued indentation', 'Exactly one space', 'snake_case', 'invalid name', 'Missing function docstring', 'xrange', 'too-few-public-methods']
+            \}
 let g:syntastic_python_pyflakes_quiet_messages = {
-        \ "regex": ['xrange']
-    \}
+            \ "regex": ['xrange']
+            \}
 
 " Folding {{{2
 Plugin 'Konfekt/FastFold'
@@ -117,43 +117,69 @@ set pyxversion=3
 set encoding=utf-8
 let g:deoplete#enable_at_startup = 1
 if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
+    let g:deoplete#omni#input_patterns = {}
 endif
-" let g:deoplete#disable_auto_complete = 1
 
 if has('nvim')
-  Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
-  Plugin 'Shougo/deoplete.nvim'
-  Plugin 'roxma/nvim-yarp'
-  Plugin 'roxma/vim-hug-neovim-rpc'
+    Plugin 'Shougo/deoplete.nvim'
+    Plugin 'roxma/nvim-yarp'
+    Plugin 'roxma/vim-hug-neovim-rpc'
 endif
-
-Plugin 'Shougo/neosnippet.vim'
-Plugin 'Shougo/neosnippet-snippets'
 
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 augroup omnifuncs
-  autocmd!
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-  autocmd FileType tex setlocal omnifunc=texcomplete#CompleteTags
+    autocmd!
+    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType python setlocal omnifunc=python3complete#Complete
+    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+    "autocmd FileType tex setlocal omnifunc=texcomplete#Complete
 augroup end
 
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+" vimtex
+call deoplete#custom#var('omni', 'input_patterns', {
+      \ 'tex': g:vimtex#re#deoplete
+      \})
+
+" snippets
+Plugin 'Shougo/neosnippet.vim'
+Plugin 'Shougo/neosnippet-snippets'
+Plugin 'honza/vim-snippets'
+Plugin 'Shougo/context_filetype.vim'
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets' behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+            "\ pumvisible() ? "\<C-n>" :
+            "\ neosnippet#expandable_or_jumpable() ?
+            "\    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+"smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+            "\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+"if has('conceal')
+    "set conceallevel=2 concealcursor=niv
+"endif
 
 " indentline {{{2
 Plugin 'Yggdroot/indentLine'
 let g:indentLine_enabled=1
 let g:indentLine_color_term=234
 "let g:indentLine_color_term=239
-let g:indentLine_char="|"
-"let g:indentLine_char="¦"
+"let g:indentLine_char="|"
+let g:indentLine_char="¦"
 let g:indentLine_indentLevel=20 
 
 call vundle#end()
