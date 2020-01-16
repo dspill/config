@@ -144,9 +144,16 @@ augroup end
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " vimtex
+" This is new style
 call deoplete#custom#var('omni', 'input_patterns', {
       \ 'tex': g:vimtex#re#deoplete
       \})
+
+" This is old style (deprecated)
+"if !exists('g:deoplete#omni#input_patterns')
+  "let g:deoplete#omni#input_patterns = {}
+"endif
+"let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 
 " snippets
 Plugin 'Shougo/neosnippet.vim'
