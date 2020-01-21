@@ -112,50 +112,38 @@ set foldtext=NeatFoldText()
 " }}}3
 
 " completion {{{2
-" Deoplete
-set pyxversion=3
-set encoding=utf-8
-let g:deoplete#enable_at_startup = 1
-if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
+if has("python3")
+    " Deoplete
+    set pyxversion=3
+    set encoding=utf-8
+    let g:deoplete#enable_at_startup = 1
+    if !exists('g:deoplete#omni#input_patterns')
+        let g:deoplete#omni#input_patterns = {}
+    endif
+
+    if has('nvim')
+        Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    else
+        Plugin 'Shougo/deoplete.nvim'
+        Plugin 'roxma/nvim-yarp'
+        Plugin 'roxma/vim-hug-neovim-rpc'
+    endif
+
+    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+    augroup omnifuncs
+        autocmd!
+        autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+        autocmd FileType python setlocal omnifunc=python3complete#Complete
+        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+        "autocmd FileType tex setlocal omnifunc=texcomplete#Complete
+    augroup end
+
+    " deoplete tab-complete
+    inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 endif
-
-if has('nvim')
-    Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-    Plugin 'Shougo/deoplete.nvim'
-    Plugin 'roxma/nvim-yarp'
-    Plugin 'roxma/vim-hug-neovim-rpc'
-endif
-
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
-augroup omnifuncs
-    autocmd!
-    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python setlocal omnifunc=python3complete#Complete
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-    "autocmd FileType tex setlocal omnifunc=texcomplete#Complete
-augroup end
-
-" deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-" vimtex
-" This is new style
-if !exists('g:vimtex#re#deoplete')
-    call deoplete#custom#var('omni', 'input_patterns', {
-                \ 'tex': g:vimtex#re#deoplete
-                \})
-endif
-
-" This is old style (deprecated)
-"if !exists('g:deoplete#omni#input_patterns')
-"let g:deoplete#omni#input_patterns = {}
-"endif
-"let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 
 " snippets
 Plugin 'Shougo/neosnippet.vim'

@@ -64,11 +64,20 @@ let g:tex_conceal = ""
 let g:vimtex_indent_on_ampersands="0"
 
 " completion
+if !exists('g:vimtex#re#deoplete')
+    call deoplete#custom#var('omni', 'input_patterns', {
+                \ 'tex': g:vimtex#re#deoplete
+                \})
+endif
+
+"youcompleteme
 if !exists('g:ycm_semantic_triggers')
     let g:ycm_semantic_triggers = {}
 endif
+
 let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
+" neocomplete
 if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
 endif
