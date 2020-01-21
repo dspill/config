@@ -115,6 +115,7 @@ set foldtext=NeatFoldText()
 " Deoplete
 set pyxversion=3
 set encoding=utf-8
+
 let g:deoplete#enable_at_startup = 1
 if !exists('g:deoplete#omni#input_patterns')
     let g:deoplete#omni#input_patterns = {}
@@ -145,13 +146,15 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " vimtex
 " This is new style
-call deoplete#custom#var('omni', 'input_patterns', {
-      \ 'tex': g:vimtex#re#deoplete
-      \})
+if exists('g:vimtex#re#deoplete')
+    call deoplete#custom#var('omni', 'input_patterns', {
+                \ 'tex': g:vimtex#re#deoplete
+                \})
+endif
 
 " This is old style (deprecated)
 "if !exists('g:deoplete#omni#input_patterns')
-  "let g:deoplete#omni#input_patterns = {}
+"let g:deoplete#omni#input_patterns = {}
 "endif
 "let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 
@@ -177,7 +180,7 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " For conceal markers.
 "if has('conceal')
-    "set conceallevel=2 concealcursor=niv
+"set conceallevel=2 concealcursor=niv
 "endif
 
 " indentline {{{2

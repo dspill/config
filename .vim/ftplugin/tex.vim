@@ -13,6 +13,14 @@ setlocal spell
 " vimtex {{{1
 let g:tex_flavor = 'latex'
 
+" indenting
+let g:vimtex_indent_delims = {
+            \ 'open' : ['{', '[', '(', '\qty[', '\qty(', '\qty{'],
+            \ 'close' : ['}', ']', ')'],
+            \ 'close_indented' : 0,
+            \ 'include_modified_math' : 1,
+            \}
+
 " viewing
 "let g:vimtex_view_method = 'mupdf'
 "let g:vimtex_view_mupdf_send_keys = 'W' 
@@ -47,16 +55,16 @@ let g:vimtex_quickfix_warnings = {
 let g:vimtex_quickfix_autoclose_after_keystrokes=2
 
 "let g:vimtex_quickfix_ignored_warnings = [
-"\ 'Underfull',
-"\ 'Overfull',
-"\ 'specifier changed to',
-"\ 'Unused global option(s)',
-"\ 'fancyhdr',
-"\ 'titlesec',
-"\ 'Title has more then 3 lines',
-"\ 'xparse/redefine-command',
-"\ 'Hyperref warning: Token not allowed'
-"\ ]
+            "\ 'Underfull',
+            "\ 'Overfull',
+            "\ 'specifier changed to',
+            "\ 'Unused global option(s)',
+            "\ 'fancyhdr',
+            "\ 'titlesec',
+            "\ 'Title has more then 3 lines',
+            "\ 'xparse/redefine-command',
+            "\ 'Hyperref warning: Token not allowed'
+            "\ ]
 
 let maplocalleader="\\"
 let g:tex_conceal = ""
@@ -64,11 +72,6 @@ let g:tex_conceal = ""
 let g:vimtex_indent_on_ampersands="0"
 
 " completion
-if !exists('g:ycm_semantic_triggers')
-    let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
-
 if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
 endif
