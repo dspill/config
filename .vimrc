@@ -10,9 +10,10 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'PotatoesMaster/i3-vim-syntax'
-Plugin 'scrooloose/nerdtree'
+"Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vlaadbrain/gnuplot.vim'
+Plugin 'tridactyl/vim-tridactyl'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-unimpaired'
@@ -20,9 +21,7 @@ Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'lervag/vimtex'
 "Plugin 'WolfgangMehner/c-support'
 
-"Plugin 'python-mode/python-mode'
-"let g:pymode_lint = 0
-"let g:pymode_lint_on_write = 0
+Plugin 'python-mode/python-mode'
 
 " Solarized {{{2
 Plugin 'altercation/vim-colors-solarized'
@@ -52,21 +51,21 @@ set statusline+=%*
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_mode_map = { 'mode': 'active', 
-"\'active_filetypes': ["python", "cpp", "tex"],
-"\'passive_filetypes': [] }
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+    let g:syntastic_mode_map = {
+        \ "mode": "active",
+        \ "active_filetypes": ["cpp"],
+        \ "passive_filetypes": ["python"] }
+
 "nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
+
 "let g:syntastic_quiet_messages = {
             "\ "!level":  "errors",
             "\ "type":    "style",
             "\ "regex":   '\m\[C03\d\d\]',
             "\ "file:p":  ['\m^/usr/include/', '\m\c\.h$'] }
-let g:syntastic_tex_quiet_messages = {
-            \ "regex": ['You should enclose the previous', 'You should perhaps use'],
-            \ "file":  ['preamble.*\.tex']}
-let g:syntastic_tex_chktex_quiet_messages = {
-            \ "regex": ['You should enclose the previous', 'You should perhaps use'],
-            \ "file":  ['preamble.*\.tex']}
 
 " CPP
 "let g:syntastic_cpp_compiler = 'gcc'
@@ -76,17 +75,9 @@ let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_checkers = ['gcc']
 let g:syntastic_cpp_include_dir=['lib']
 "
-" Python
-let g:syntastic_python_checkers = ["python", "pylint", "pyflakes"]
-let g:syntastic_python_python_exec = '/usr/bin/env python3'
-let g:syntastic_python_pylint_quiet_messages = {
-            \ "regex": ['Anomalous backslash', 'naming style', 'Too many', 'Unable to import', 'docstring', 'continued indentation', 'Exactly one space', 'snake_case', 'invalid name', 'Missing function docstring', 'xrange', 'too-few-public-methods']
-            \}
-let g:syntastic_python_pyflakes_quiet_messages = {
-            \ "regex": ['xrange']
-            \}
 
 " Folding {{{2
+Plugin 'tmhedberg/SimpylFold.git'
 Plugin 'Konfekt/FastFold'
 let g:tex_fold_enabled=1
 "let g:vimsyn_folding='af'
@@ -137,22 +128,11 @@ if has("python3")
         Plugin 'roxma/vim-hug-neovim-rpc'
     endif
 
-    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
-    augroup omnifuncs
-        autocmd!
-        autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-        autocmd FileType python setlocal omnifunc=python3complete#Complete
-        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-        "autocmd FileType tex setlocal omnifunc=texcomplete#Complete
-    augroup end
-
     " deoplete tab-complete
     inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+    "autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+    " TODO problematic in command line
 
     augroup omnifuncs
         autocmd!
@@ -168,7 +148,7 @@ if has("python3")
     inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 endif
 
-" snippets
+" snippets {{{2
 Plugin 'Shougo/neosnippet.vim'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'honza/vim-snippets'
@@ -188,11 +168,6 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 "smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
             "\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
-" For conceal markers.
-"if has('conceal')
-"set conceallevel=2 concealcursor=niv
-"endif
-
 " indentline {{{2
 Plugin 'Yggdroot/indentLine'
 let g:indentLine_enabled=1
@@ -206,6 +181,11 @@ call vundle#end()
 
 
 " Settings {{{1
+
+" For conceal markers.
+"if has('conceal')
+"set conceallevel=2 concealcursor=niv
+"endif
 
 " solarized color sheme
 "colorscheme default

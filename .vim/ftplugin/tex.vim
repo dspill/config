@@ -10,6 +10,19 @@ let g:solarized_visibility="low"    "default value is normal
 
 setlocal spell
 
+" syntastic {{{1
+if exists("g:loaded_syntastic_plugin")
+    let g:syntastic_tex_quiet_messages = {
+                \ "regex": ['You should enclose the previous', 
+                \ 'You should perhaps use'],
+                \ "file":  ['preamble.*\.tex']}
+
+    let g:syntastic_tex_chktex_quiet_messages = {
+                \ "regex": ['You should enclose the previous', 
+                \ 'You should perhaps use'],
+                \ "file":  ['preamble.*\.tex']}
+endif
+
 " vimtex {{{1
 let g:tex_flavor = 'latex'
 
@@ -54,18 +67,6 @@ let g:vimtex_quickfix_warnings = {
             \}
 let g:vimtex_quickfix_autoclose_after_keystrokes=2
 
-"let g:vimtex_quickfix_ignored_warnings = [
-            "\ 'Underfull',
-            "\ 'Overfull',
-            "\ 'specifier changed to',
-            "\ 'Unused global option(s)',
-            "\ 'fancyhdr',
-            "\ 'titlesec',
-            "\ 'Title has more then 3 lines',
-            "\ 'xparse/redefine-command',
-            "\ 'Hyperref warning: Token not allowed'
-            "\ ]
-
 let maplocalleader="\\"
 let g:tex_conceal = ""
 
@@ -73,36 +74,35 @@ let g:vimtex_indent_on_ampersands="0"
 
 " completion
 " deoplete
-if !exists('g:vimtex#re#deoplete')
+if exists('g:deoplete#loaded_deoplete')
     call deoplete#custom#var('omni', 'input_patterns', {
                 \ 'tex': g:vimtex#re#deoplete
                 \})
 endif
 
 "youcompleteme
-if !exists('g:ycm_semantic_triggers')
+if exists('g:ycm_semantic_triggers')
     let g:ycm_semantic_triggers = {}
+    let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 endif
-
-let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
 " neocomplete
-if !exists('g:neocomplete#sources#omni#input_patterns')
+if exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
+    let g:neocomplete#sources#omni#input_patterns.tex =
+                \ '\v\\%('
+                \ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+                \ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
+                \ . '|hyperref\s*\[[^]]*'
+                \ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+                \ . '|%(include%(only)?|input)\s*\{[^}]*'
+                \ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+                \ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
+                \ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
+                \ . ')'
 endif
-let g:neocomplete#sources#omni#input_patterns.tex =
-            \ '\v\\%('
-            \ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-            \ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
-            \ . '|hyperref\s*\[[^]]*'
-            \ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-            \ . '|%(include%(only)?|input)\s*\{[^}]*'
-            \ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-            \ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
-            \ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
-            \ . ')'
 
-" custom mappings {{{1
+" custom mappings {{{2
 call vimtex#imaps#add_map({
             \ 'lhs' : '^',
             \ 'rhs' : '^{',

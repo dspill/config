@@ -2,24 +2,29 @@ setlocal fo-=t
 setlocal foldmethod=indent
 set foldlevel=99
 
-"nnoremap <buffer> "" :w <BAR> !clear && mpirun -n $(nproc) python %:p<CR>
-"nnoremap <buffer> "" :w <BAR> !mpirun -n $(nproc) python %:p<CR>
 nnoremap <buffer> "" :w <BAR> !python3 %:p<CR>
 
-" old pymode settings
-"dont show error if line too long
-"let g:pymode_lint_ignore = "C901,E501,W0401,E221"
-"let g:pymode_rope=0
-"let g:pymode_rope_completion=0
-"let g:pymode_rope_regenerate_on_write=0
+if exists('g:pymode_lint')
+    let g:pymode_lint = 0
+    let g:pymode_lint_on_write = 0
+endif
 
-"let g:pymode_lint_ignore = "E203,E731,W0611,C901,E501,W0401,E221"
 
-"dont show documentation automatically
-"let g:pymode_doc = 0
 
- "run script
-"let g:pymode_run=1
-"let g:pymode_run_bind = '<leader>ll'
+" Syntastic
+if exists("g:loaded_syntastic_plugin")
+    let g:syntastic_python_python_exec = '/usr/bin/env python3'
+    "let g:syntastic_python_checkers = ["python", "pylint", "pyflakes"]
+    let g:syntastic_python_checkers = ["pylint"]
+    "let g:syntastic_python_pylint_quiet_messages = {
+                "\ "regex": ['Anomalous backslash', 'naming style', 'Too many',
+                "\ 'Unable to import', 'docstring', 'continued indentation',
+                "\ 'Exactly one space', 'snake_case', 'invalid name', 
+                "\'Missing function docstring', 'xrange', 
+                "\'too-few-public-methods']
+                "\}
 
-"setlocal textwidth=0
+    "let g:syntastic_python_pyflakes_quiet_messages = {
+                "\ "regex": ['xrange']
+                "\}
+endif
