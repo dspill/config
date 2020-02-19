@@ -18,10 +18,14 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+nnoremap <silent> <C-n> :set relativenumber!<cr>
 Plugin 'lervag/vimtex'
 "Plugin 'WolfgangMehner/c-support'
 
 Plugin 'python-mode/python-mode'
+Plugin 'takac/vim-hardtime'
+let g:hardtime_default_on = 1
+let g:hardtime_maxcount = 2
 
 " Solarized {{{2
 Plugin 'altercation/vim-colors-solarized'
@@ -127,9 +131,6 @@ if has("python3")
         Plugin 'roxma/nvim-yarp'
         Plugin 'roxma/vim-hug-neovim-rpc'
     endif
-
-    " deoplete tab-complete
-    inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
     "autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
     " TODO problematic in command line

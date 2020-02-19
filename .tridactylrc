@@ -31,11 +31,25 @@
 " NB: If you want "vim-like" behaviour where removing a line from
 " here makes the setting disappear, uncomment the line below.
 
-"sanitise tridactyllocal tridactylsync
+sanitise tridactyllocal tridactylsync
 
 "
 " Binds
 "
+
+" bind
+bind \rr source ~/.tridactyl | ! echo sourced ~/.tridactyl " TODO
+
+" find mode (experimental)
+bind / fillcmdline find
+bind ? fillcmdline find -?
+bind n findnext 1
+bind N findnext -1
+bind <C-l> nohlsearch
+set incsearch = true
+
+" use space to show command line
+bind <Space> fillcmdline_notrail
 
 " Comment toggler for Reddit and Hacker News
 bind ;c hint -c [class*="expand"],[class="togg"]
@@ -81,33 +95,27 @@ command hint_focus hint -;
 " Open right click menu on links
 bind ;C composite hint_focus; !s xdotool key Menu
 
-" Julia docs' built in search is bad
-set searchurls.julia https://www.google.com/search?q=site:http://docs.julialang.org/en/v1.0%20
-
-set searchengine duckduckgo
 " custom searchengines
-set searchurls.y  https://www.youtube.com/results?search_query=
-set searchurls.gs https://scholar.google.com/scholar?q=
-set searchurls.d  https://www.dict.cc/?s=
-set searchurls.li https://www.linguee.com/english-german/search?source=auto&query=
-set searchurls.dp https://www.deepl.com/translator#de/en/
-
+set searchurls.y    https://www.youtube.com/results?search_query=
+set searchurls.gs   https://scholar.google.com/scholar?q=
+set searchurls.d    https://www.dict.cc/?s=
+set searchurls.li   https://www.linguee.com/english-german/search?source=auto&query=
+set searchurls.dp   https://www.deepl.com/translator#de/en/
+set searchurls.vim: http://www.google.com/search?q=%s+site:http://vimdoc.sourceforge.net
 
 " default search engine
 set searchengine duckduckgo
 
-
-"google":"https://www.google.com/search?q=","googlelucky":"https://www.google.com/search?btnI=I'm+Feeling+Lucky&q=","scholar":"https://scholar.google.com/scholar?q=","googleuk":"https://www.google.co.uk/search?q=","bing":"https://www.bing.com/search?q=","duckduckgo":"https://duckduckgo.com/?q=","yahoo":"https://search.yahoo.com/search?p=","twitter":"https://twitter.com/search?q=","wikipedia":"https://en.wikipedia.org/wiki/Special:Search/","youtube":"https://www.youtube.com/results?search_query=","amazon":"https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=","amazonuk":"https://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=","startpage":"https://startpage.com/do/search?language=english&cat=web&query=","github":"https://github.com/search?utf8=✓&q=","searx":"https://searx.me/?category_general=on&q=","cnrtl":"http://www.cnrtl.fr/lexicographie/","osm":"https://www.openstreetmap.org/search?query=","mdn":"https://developer.mozilla.org/en-US/search?q=","gentoo_wiki":"https://wiki.gentoo.org/index.php?title=Special%3ASearch&profile=default&fulltext=Search&search=","qwant":"https://www.qwant.com/?q=","julia":"https://www.google.com/search?q=site:http://docs.julialang.org/en/v1.0%20"}
-
 "
 " Misc settings
 "
+guiset_quiet statuspanel top-right
 
 " set editorcmd to suckless terminal, or use the defaults on other platforms
 js tri.browserBg.runtime.getPlatformInfo().then(os=>{const editorcmd = os.os=="linux" ? "st vim" : "auto"; tri.config.set("editorcmd", editorcmd)})
 
 " set profile dir on Windows
-jsb browser.runtime.getPlatformInfo().then(os=>{const profiledir = os.os=="win" ? "C:\\Users\\olie\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\gwm76nmk.default" : "auto"; tri.config.set("profiledir", profiledir)})
+" jsb browser.runtime.getPlatformInfo().then(os=>{const profiledir = os.os=="win" ? "C:\\Users\\olie\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\gwm76nmk.default" : "auto"; tri.config.set("profiledir", profiledir)})
 
 " Sane hinting mode
 set hintfiltermode vimperator-reflow
