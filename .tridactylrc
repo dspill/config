@@ -48,7 +48,11 @@ bind N findnext -1
 bind <C-l> nohlsearch
 set incsearch = true
 
+" keep shortcut to show bookmark sidebar
+unbind <C-b> 
+
 " use space to show command line
+unbind <Space> 
 bind <Space> fillcmdline_notrail
 
 " Comment toggler for Reddit and Hacker News
@@ -101,7 +105,6 @@ set searchurls.gs   https://scholar.google.com/scholar?q=
 set searchurls.d    https://www.dict.cc/?s=
 set searchurls.li   https://www.linguee.com/english-german/search?source=auto&query=
 set searchurls.dp   https://www.deepl.com/translator#de/en/
-set searchurls.vim: http://www.google.com/search?q=%s+site:http://vimdoc.sourceforge.net
 
 " default search engine
 set searchengine duckduckgo
@@ -171,4 +174,4 @@ command translate js let googleTranslateCallback = document.createElement('scrip
 " New reddit is bad
 autocmd DocStart ^http(s?)://www.reddit.com js tri.excmds.urlmodify("-t", "www", "old")
 " Mosquito nets won't make themselves
-autocmd DocStart ^http(s?)://www.amazon.co.uk js tri.excmds.urlmodify("-t", "www", "smile")
+autocmd DocStart ^http(s?)://www.amazon.de js tri.excmds.urlmodify("-t", "www", "smile")
