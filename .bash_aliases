@@ -39,7 +39,7 @@ alias cclean='rm -rfv CMakeFiles CMakeCache.txt cmake_install.cmake'
 alias light='xrdb -m ~/.xlight && export TERMSTYLE="light"'
 alias dark='xrdb -m ~/.xdark && export TERMSYLE="dark"'
 
-alias mathematica='/sw/linux/Mathematica/8.0/scripts/mathematica'
+alias mathematica='/sw/linux/Mathematica/11.2/scripts/mathematica'
 
 alias dvim="vim -c 'colorscheme default'"
 

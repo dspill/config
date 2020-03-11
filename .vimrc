@@ -17,6 +17,7 @@ Plugin 'tridactyl/vim-tridactyl'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-fugitive'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 nnoremap <silent> <C-n> :set relativenumber!<cr>
 Plugin 'lervag/vimtex'
