@@ -102,6 +102,7 @@ bind ;C composite hint_focus; !s xdotool key Menu
 " custom searchengines
 set searchurls.y    https://www.youtube.com/results?search_query=
 set searchurls.gs   https://scholar.google.com/scholar?q=
+set searchurls.m    https://www.google.com/maps/search/
 set searchurls.d    https://www.dict.cc/?s=
 set searchurls.li   https://www.linguee.com/english-german/search?source=auto&query=
 set searchurls.dp   https://www.deepl.com/translator#de/en/
