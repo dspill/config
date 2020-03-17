@@ -4,3 +4,6 @@
 ! map Caps_Lock (66) to Escape
 clear lock
 keycode 66 = Escape
+
+! map menu to super
+keycode 135 = Super_L
