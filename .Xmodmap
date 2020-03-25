@@ -1,10 +1,5 @@
 ! get keycodes with xev
 ! Load file with xmodmap ~/.Xmodmap
 
-! map Caps_Lock (66) to Escape
-!clear lock
-!keycode 66 = Escape
-
-! map menue (135) to super todo: breaks shift in terminal vim
-! 134 = Super_R 
-! 108 = 
+clear lock
+keycode 66 = Escape
