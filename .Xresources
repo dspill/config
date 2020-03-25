@@ -163,7 +163,8 @@ xterm*locale: true
 xterm*saveLines: 10240
 xterm*renderFont: True
 xterm*preeditType: Root
-xterm*faceName: Inconsolata:size=13:antialias=true
+!xterm*faceName: Inconsolata:size=13:antialias=true
+xterm*faceName: Fira-code:size=12:antialias=true
 !xterm*font: fixed
 !xterm*boldFont: fixed
 

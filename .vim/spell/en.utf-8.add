@@ -96,3 +96,14 @@ subboxes
 subbox
 dissipatively
 dissipatively
+rhs
+viscous
+ignoring
+invariants
+isotropy
+lhs
+entropic
+D3Q19
+interfacial
+priori
+differentiable

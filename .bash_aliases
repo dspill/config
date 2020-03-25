@@ -59,3 +59,6 @@ fi
 alias delete_content_of_cwd="perl -e 'for(<*>){((stat)[9]<(unlink))}'"
 
 alias plot="plot.py -f "
+
+alias trim="ex +'bufdo!%s/\s\+$//e' -scxa"
+alias retab="ex +'set ts=2' +'bufdo retab' -scxa"

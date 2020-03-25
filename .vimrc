@@ -10,7 +10,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'PotatoesMaster/i3-vim-syntax'
-"Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vlaadbrain/gnuplot.vim'
 Plugin 'tridactyl/vim-tridactyl'
@@ -21,7 +20,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 nnoremap <silent> <C-n> :set relativenumber!<cr>
 Plugin 'lervag/vimtex'
-"Plugin 'WolfgangMehner/c-support'
+Plugin 'WolfgangMehner/c-support'
 
 Plugin 'python-mode/python-mode'
 Plugin 'takac/vim-hardtime'
@@ -32,7 +31,7 @@ let g:hardtime_maxcount = 2
 Plugin 'altercation/vim-colors-solarized'
 
 " tmux-navigator {{{2
-"Plugin 'christoomey/vim-tmux-navigator' 
+Plugin 'christoomey/vim-tmux-navigator' 
 "let g:tmux_navigator_no_mappings = 1
 
 "nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
@@ -41,10 +40,8 @@ Plugin 'altercation/vim-colors-solarized'
 "nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
 "nnoremap <silent> <M-/> :TmuxNavigatePrevious<cr>
 
-" vim-online-thesaurus {{{2
-Plugin 'beloglazov/vim-online-thesaurus'
-let g:online_thesaurus_map_keys = 0
-nnoremap <leader>th :OnlineThesaurusCurrentWord<CR>
+" rhesaurus {{{2
+"Plugin 'Ron89/thesaurus_query.vim'
 
 " syntastic {{{2
 Plugin 'scrooloose/syntastic'
@@ -360,15 +357,15 @@ nnoremap <leader>rr :source ~/.vimrc <CR>
 
 nnoremap <leader>nt :NERDTreeToggle <CR>
 
-" folds
+"" folds
 nnoremap <ESC><ESC> za
 nnoremap z- zMzv
 
-" fold by markers
+"" fold by markers
 set foldmethod=marker
 
-" Exit insert mode more easily
-inoremap <ESC> <ESC>l
+"" Exit insert mode more easily
+"inoremap <ESC> <ESC>l
 
 " delete right char in ins mode
 inoremap <C-L> <DEL>

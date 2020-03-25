@@ -106,6 +106,7 @@ set searchurls.m    https://www.google.com/maps/search/
 set searchurls.d    https://www.dict.cc/?s=
 set searchurls.li   https://www.linguee.com/english-german/search?source=auto&query=
 set searchurls.dp   https://www.deepl.com/translator#de/en/
+set searchurls.th   https://www.thesaurus.com/misspelling?term=%s&s=t
 
 " default search engine
 set searchengine duckduckgo

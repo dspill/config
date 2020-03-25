@@ -105,8 +105,8 @@ bindsym $mod+control+Up exec xbacklight -inc 20
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 
 bindsym $mod+control+Down exec xbacklight -dec 20
 
-bindsym Control+mod1+q exec sudo shutdown now
-bindsym Control+mod1+r exec sudo shutdown -r now
+bindsym Control+mod1+q exec ~/.local/bin/shutdown
+bindsym Control+mod1+r exec ~/.local/bin/shutdown -r 
 bindsym Control+mod1+h exec sudo systemctl hibernate
 
 bindsym Control+mod1+m exec ~/local/bin/reset_dp-1
@@ -268,6 +268,7 @@ bindsym $mod+control+Left exec cmus-remote --prev
 #set $baseB3 #002b36
 #set $custom #e1cab3
 
+# TODO
 # The ~/.Xresources should contain a line such as
 #     *color0: #121212
 # and must be loaded properly, e.g., by using

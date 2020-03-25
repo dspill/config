@@ -87,19 +87,12 @@ else
     PS1='[\[\033[0;32m\]\u\[\033[0m\]@\h:\w]\$ '
 fi
 
-for module in anaconda/3/5.1 git gnuplot vmd; do 
-    #echo "loading $module"
-    if module avail 2>&1 | grep $module > /dev/null; then
-        module load $module
-    fi
-done
+if hash module 2>/dev/null; then
+    for module in anaconda/3/5.1 git gnuplot vmd; do 
+        #echo "loading $module"
+        if module avail 2>&1 | grep $module > /dev/null; then
+            module load $module
+        fi
+    done
+fi
 
-# {{{1 Unified bash history even with multiple shells in tmux
-# avoid duplicates..
-#export HISTCONTROL=ignoredups:erasedups
-
-## append history entries..
-#shopt -s histappend
-
-# After each command, save and reload history
-#export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"

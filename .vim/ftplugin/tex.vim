@@ -6,6 +6,8 @@ setlocal softtabstop=2
 
 " view linebreak etc
 setlocal list
+
+setlocal foldlevel=2
 let g:solarized_visibility="low"    "default value is normal
 
 setlocal spell
@@ -14,7 +16,8 @@ setlocal spell
 if exists("g:loaded_syntastic_plugin")
     let g:syntastic_tex_quiet_messages = {
                 \ "regex": ['You should enclose the previous', 
-                \ 'You should perhaps use'],
+                \ 'You should perhaps use',
+                \ 'vice', 'versa'],
                 \ "file":  ['preamble.*\.tex']}
 
     let g:syntastic_tex_chktex_quiet_messages = {
