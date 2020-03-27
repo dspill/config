@@ -31,7 +31,7 @@ let g:hardtime_maxcount = 2
 Plugin 'altercation/vim-colors-solarized'
 
 " tmux-navigator {{{2
-Plugin 'christoomey/vim-tmux-navigator' 
+"Plugin 'christoomey/vim-tmux-navigator' " remaps <C-L> !!!
 "let g:tmux_navigator_no_mappings = 1
 
 "nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
@@ -343,7 +343,7 @@ map Y y$
 nnoremap <C-L> :nohl<CR><C-L>
 
 " indent whole file
-nnoremap <TAB> mygg=G`yzz
+nnoremap <C-TAB> mygg=G`yzz
 
 " run current file
 nnoremap "" :w <BAR> !clear && %:p<CR>

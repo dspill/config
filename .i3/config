@@ -73,8 +73,10 @@ set $w9 "9"
 set $w10 "10"
 
 #b bind workspaces to monitors
-set $monitor_1 "DP-1"
-set $monitor_2 "DVI-I-1"
+set $monitor_1 "HDMI1"
+set $monitor_2 "LVDS1"
+#set $monitor_1 "DP-1"
+#set $monitor_2 "DVI-I-1"
 
 workspace $w1 output $monitor_1
 workspace $w2 output $monitor_1
