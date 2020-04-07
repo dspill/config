@@ -50,33 +50,18 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 " General
+nnoremap <leader>st :SyntasticToggleMode <CR>
+nnoremap <leader>sc :SyntasticCheck <CR>
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-    let g:syntastic_mode_map = {
-        \ "mode": "active",
-        \ "active_filetypes": ["cpp"],
-        \ "passive_filetypes": ["python"] }
-
-"nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
-
-"let g:syntastic_quiet_messages = {
-            "\ "!level":  "errors",
-            "\ "type":    "style",
-            "\ "regex":   '\m\[C03\d\d\]',
-            "\ "file:p":  ['\m^/usr/include/', '\m\c\.h$'] }
-
-" CPP
-"let g:syntastic_cpp_compiler = 'gcc'
-let g:syntastic_cpp_compiler_options = '-std=c++14 -Wall -Wextra -pedantic -fopenmp'
-let g:syntastic_cpp_check_header = 1
-"let g:syntastic_cpp_checkers = ['clang_check', 'gcc']
-let g:syntastic_cpp_checkers = ['gcc']
-let g:syntastic_cpp_include_dir=['lib']
-"
+let g:syntastic_mode_map = {
+    \ "mode": "active",
+    \ "active_filetypes": ["cpp"],
+    \ "passive_filetypes": ["python"] }
 
 " Folding {{{2
 Plugin 'tmhedberg/SimpylFold.git'
@@ -218,9 +203,9 @@ set colorcolumn=79
 
 " backup options
 set backup
-set directory=~/.backup/vim/swap//,./,/tmp//
-set backupdir=~/.backup/vim/backup//,./,/tmp//
-set undodir=~/.backup/vim/undo//,./,/tmp//
+set directory=$HOME/.backup/vim/swap//,.,/VAR/TMP/,/TMP
+set backupdir=$HOME/.backup/vim/backup//,.,/var/tmp/,/tmp
+set undodir=$HOME/.backup/vim/undo//,.,/var/tmp/,/tmp
 
 set hidden
 " Note that not everyone likes working this way (with the hidden option).

@@ -14,17 +14,17 @@ setlocal spell
 
 " syntastic {{{1
 if exists("g:loaded_syntastic_plugin")
-    let g:syntastic_tex_quiet_messages = {
-                \ "regex": ['You should enclose the previous', 
-                \ 'You should perhaps use',
-                \ 'vice', 'versa'],
-                \ "file":  ['preamble.*\.tex']}
-
+    let g:syntastic_tex_checkers = ['chktex']
     let g:syntastic_tex_chktex_quiet_messages = {
-                \ "regex": ['You should enclose the previous', 
-                \ 'You should perhaps use'],
+                \ "regex": [
+                \ 'You should enclose the previous parenthesis with',
+                \ 'You should put punctuation outside inner math mode'
+                \],
                 \ "file":  ['preamble.*\.tex']}
 endif
+                "\ 'You should enclose the previous', 
+                "\ 'You should perhaps use',
+                "\ 'vice', 'versa',
 
 " vimtex {{{1
 let g:tex_flavor = 'latex'
@@ -123,6 +123,13 @@ call vimtex#imaps#add_map({
 call vimtex#imaps#add_map({
             \ 'lhs' : '/',
             \ 'rhs' : '\frac{',
+            \ 'leader' : '`',
+            \ 'wrapper' : 'vimtex#imaps#wrap_math'
+            \})
+
+call vimtex#imaps#add_map({
+            \ 'lhs' : '~',
+            \ 'rhs' : '\tilde',
             \ 'leader' : '`',
             \ 'wrapper' : 'vimtex#imaps#wrap_math'
             \})

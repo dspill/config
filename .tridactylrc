@@ -114,7 +114,8 @@ set searchengine duckduckgo
 "
 " Misc settings
 "
-guiset_quiet statuspanel top-right
+"guiset_quiet statuspanel top-right
+guiset_quiet statuspanel right
 
 " set editorcmd to suckless terminal, or use the defaults on other platforms
 js tri.browserBg.runtime.getPlatformInfo().then(os=>{const editorcmd = os.os=="linux" ? "st vim" : "auto"; tri.config.set("editorcmd", editorcmd)})

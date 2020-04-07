@@ -1,0 +1,15 @@
+#!/bin/bash
+if ifconfig tun0 | grep -q "00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00"
+then
+    echo "up"
+    echo "up"
+    echo "#859900"
+    exit 0
+fi
+
+echo "down"
+echo "down"
+echo "#dc322f"
+exit 33
+
+

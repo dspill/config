@@ -1,0 +1,94 @@
+#!/bin/bash
+
+# if cmus playing
+if [[ -n $(cmus-remote -Q | grep "status") ]]; then
+    case "$BLOCK_BUTTON" in
+        # left
+        1) cmus-remote --pause ;;
+        # middle
+        2) cmus-remote --stop ;;
+        # right
+        3) cmus-remote --next ;;
+        # wheel up
+        4) cmus-remote --volume +5% ;;
+        # wheel down
+        5) cmus-remote --volume -5% ;;
+    esac
+
+    if [[ -n $(cmus-remote -Q | grep "status playing") ]]; then
+        echo -n " "
+    elif [[ -n $(cmus-remote -Q | grep "status paused") ]]; then
+        echo -n " "
+    elif [[ -n $(cmus-remote -Q | grep "status stopped") ]]; then
+        #echo -n " "
+        exit
+    fi
+
+    volume=$(cmus-remote -Q | grep ' vol_left ' | cut -d ' ' -f3-)
+
+    # fetch album artist name 
+    artist=$(cmus-remote -Q | grep ' albumartist ' | cut -d ' ' -f3-)
+
+    # if not given, use artist name
+    if [[ -z $artist ]]; then
+        artist=$(cmus-remote -Q | grep ' artist ' | cut -d ' ' -f3-)
+    fi
+
+    if [[ -z $artist ]]; then
+        artist="Unknown Artist"
+    fi
+
+    # fetch title
+    title=$(cmus-remote -Q | grep title | cut -d ' ' -f3-)
+
+    if [[ -z $title ]]; then
+        title="Unknown Title"
+    fi
+
+    # crop to 32 letters
+    artist=${artist:0:32}
+    title=${title:0:32}
+
+    # print artist and title
+    echo -n "${volume}% $artist - $title "
+
+    # find out shuffle and repeat status
+    if [[ -n $(cmus-remote -Q | grep "shuffle true") ]]; then
+        echo -n 
+    fi
+    if [[ -n $(cmus-remote -Q | grep "repeat true") ]]; then
+        echo -n 
+    fi
+
+    exit
+fi
+
+
+# if amarok playing
+if [[ $(playerctl -p amarok status) == Playing ]]; then
+    # fetch album artist name 
+    artist=$(playerctl -p amarok metadata xesam:albumArtist)
+    # if not given, use artist name
+    if [[ -z $artist ]]; then
+        artist=$(playerctl -p amarok metadata artist)
+    fi
+
+    if [[ -z $artist ]]; then
+        artist="Unknown Artist"
+    fi
+
+    # fetch title
+    title=$(playerctl -p amarok metadata title)
+    if [[ -z $title ]]; then
+        title="Unknown Title"
+    fi
+
+    # crop to 32 letters
+    artist=${artist:0:32}
+    title=${title:0:32}
+
+    # print artist and title
+    echo "$artist - $title"
+
+    exit
+fi

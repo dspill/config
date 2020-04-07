@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#SYMBOL=' '
+#DEFAULT_COLOR="#93a1a1"
+
+case "$BLOCK_BUTTON" in
+    1) system-config-printer ;;
+    2) system-config-printer ;;
+    3) system-config-printer ;;
+esac
+
+#echo $SYMBOL
+#echo "$COLOR"
+
+echo "printer"
+

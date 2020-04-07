@@ -363,13 +363,12 @@ exec --no-startup-id i3-msg 'workspace $w6; \
 # warmer display at night
 exec --no-startup-id redshift -l 49.8728:8.6512  -t 5500:3700
 
-# set keyboard layout
-#exec_always --no-startup-id setxkbmap -layout 'us(altgr-intl)'
-
 # keyboard options
-#exec_always --no-startup-id sleep 3 && xmodmap ~/.Xmodmap
+exec_always --no-startup-id setxkbmap -layout 'us(altgr-intl)'
+exec_always --no-startup-id xmodmap ~/.Xmodmap
 
+# background
 exec --no-startup-id xsetroot -solid "#eee8d5"
 
-# hide mouse cursor
+# hide mouse cursor when inactive
 exec_always --no-startup-id unclutter -idle 3 -root
