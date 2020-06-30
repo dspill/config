@@ -61,18 +61,19 @@ set $w8 "8: "
 set $w9 "9: "
 set $w10 "10: "
 
-#set $w1 "1"
-#set $w2 "2"
-#set $w3 "3"
-#set $w4 "4"
-#set $w5 "5"
-#set $w6 "6"
-#set $w7 "7"
-#set $w8 "8"
-#set $w9 "9"
-#set $w10 "10"
+set $ws1 "s1: "
+set $ws2 "s2: "
+set $ws3 "s3: "
+set $ws4 "s4: "
+set $ws5 "s5: "
+set $ws6 "s6: "
+set $ws7 "s7: "
+set $ws8 "s8: "
+set $ws9 "s9: "
+set $ws10 "s10: "
 
-#b bind workspaces to monitors
+
+# bind workspaces to monitors
 set $monitor_1 "HDMI1"
 set $monitor_2 "LVDS1"
 #set $monitor_1 "DP-1"
@@ -84,10 +85,19 @@ workspace $w3 output $monitor_1
 workspace $w4 output $monitor_1
 workspace $w5 output $monitor_1
 workspace $w6 output $monitor_1
-workspace $w7 output $monitor_2
-workspace $w8 output $monitor_2
-workspace $w9 output $monitor_2
-workspace $w10 output $monitor_2
+workspace $w7 output $monitor_1
+workspace $w8 output $monitor_1
+workspace $w9 output $monitor_1
+
+workspace $ws1 output $monitor_2
+workspace $ws2 output $monitor_2
+workspace $ws3 output $monitor_2
+workspace $ws4 output $monitor_2
+workspace $ws5 output $monitor_2
+workspace $ws6 output $monitor_2
+workspace $ws7 output $monitor_2
+workspace $ws8 output $monitor_2
+workspace $ws9 output $monitor_2
 
 # {{{1 Shortcuts
 # use xev to find keycodes
@@ -95,9 +105,9 @@ workspace $w10 output $monitor_2
 bindsym XF86HomePage exec firefox
 
 # switch monitors
-bindsym $mod+F1 exec ~/local/bin/switch 1
-bindsym $mod+F2 exec ~/local/bin/switch 2
-bindsym $mod+F3 exec ~/local/bin/switch 3
+bindsym $mod+F1 exec ~/.local/bin/switch 1
+bindsym $mod+F2 exec ~/.local/bin/switch 2
+bindsym $mod+F3 exec ~/.local/bin/switch 3
 
 # increase screen brightness
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 
@@ -130,6 +140,18 @@ bindsym $mod+8 workspace $w8
 bindsym $mod+9 workspace $w9
 bindsym $mod+0 workspace $w10
 
+bindsym $mod+Control+1 workspace $ws1 
+bindsym $mod+Control+2 workspace $ws2
+bindsym $mod+Control+3 workspace $ws3
+bindsym $mod+Control+4 workspace $ws4
+bindsym $mod+Control+5 workspace $ws5
+bindsym $mod+Control+6 workspace $ws6
+bindsym $mod+Control+7 workspace $ws7
+bindsym $mod+Control+8 workspace $ws8
+bindsym $mod+Control+9 workspace $ws9
+bindsym $mod+Control+0 workspace $ws10
+
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $w1
 bindsym $mod+Shift+2 move container to workspace $w2
@@ -142,6 +164,17 @@ bindsym $mod+Shift+8 move container to workspace $w8
 bindsym $mod+Shift+9 move container to workspace $w9
 bindsym $mod+Shift+0 move container to workspace $w10
 
+bindsym $mod+Mod1+1 move container to workspace $ws1
+bindsym $mod+Mod1+2 move container to workspace $ws2
+bindsym $mod+Mod1+3 move container to workspace $ws3
+bindsym $mod+Mod1+4 move container to workspace $ws4
+bindsym $mod+Mod1+5 move container to workspace $ws5
+bindsym $mod+Mod1+6 move container to workspace $ws6
+bindsym $mod+Mod1+7 move container to workspace $ws7
+bindsym $mod+Mod1+8 move container to workspace $ws8
+bindsym $mod+Mod1+9 move container to workspace $ws9
+bindsym $mod+Mod1+0 move container to workspace $ws10
+
 # move workspaces across monitors
 bindsym $mod+Shift+greater move container to output right
 bindsym $mod+Shift+less move container to output left
@@ -150,7 +183,7 @@ bindsym $mod+Shift+less move container to output left
 bindsym $mod+Return exec $terminal
 
 # lock computer
-bindsym $mod+shift+x exec i3lock -c 000000
+bindsym $mod+Shift+x exec i3lock -c 000000
 
 # kill focused window
 bindsym $mod+q kill
@@ -196,7 +229,6 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+p focus parent
-
 # focus the child container
 bindsym $mod+c focus child
 
@@ -246,31 +278,7 @@ bindsym XF86AudioPlay exec cmus-remote --pause
 bindsym $mod+control+Right exec cmus-remote --next
 bindsym $mod+control+Left exec cmus-remote --prev
 
-# {{{1 Solarized
-
-# $i3-theme-window
-# solarized accents
-#set $yellow     #b58900
-#set $orange     #cb4b16
-#set $red        #dc322f
-#set $magenta    #d33682
-#set $violet     #6c71c4
-#set $blue       #268bd2
-#set $cyan       #2aa198
-#set $green      #859900
-
-## solarized light
-#set $baseA3 #fdf6e3
-#set $baseA2 #eee8d5
-#set $baseA1 #93a1a1
-#set $baseA0 #839496
-#set $baseB0 #657b83
-#set $baseB1 #586e75
-#set $baseB2 #073642
-#set $baseB3 #002b36
-#set $custom #e1cab3
-
-# TODO
+# {{{1 Solarized colors
 # The ~/.Xresources should contain a line such as
 #     *color0: #121212
 # and must be loaded properly, e.g., by using
@@ -295,9 +303,6 @@ set_from_resource $baseB0     i3wm.color12  #657b83
 set_from_resource $baseB1     i3wm.color14  #586e75
 set_from_resource $baseB2     i3wm.color7   #073642
 set_from_resource $baseB3     i3wm.color15  #002b36
-
-# $i3-background
-#exec_always --no-startup-id xsetroot -solid '$baseA2'
 
 # clientclass                   border  backgr. text    indicator
 client.focused                  $baseB0 $green  $baseB3 $yellow
@@ -324,29 +329,22 @@ bar {
         urgent_workspace               $yellow $yellow $baseB3
     }
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
-}
-#bar {
-    #colors {
-        ## status
-        #separator $blue
-        #background $baseA3
-        #statusline $baseB2
-
-        ## workclas                     border  backgr. text
-        #focused_workspace              $green  $green  $baseA3
-        #active_workspace               $cyan   $cyan   $baseA2
-        #inactive_workspace             $baseA2 $baseA2 $baseB1
-        ##urgent_workspace               $orange $orange $baseB3
-        #urgent_workspace               $yellow $yellow $baseB3
-    #}
     #status_command i3status
-#}
+}
 
 # {{{1 Startup
 # open apps in specified workspace
 # use xprop to get class, title etc
 assign[title="Workspace 1"] $w1
 assign[title="Workspace 2"] $w2
+assign[title="ranger"] $w4
+assign[title="cmus"] $w5
+assign[class="spotify"] $w5
+
+exec xterm -e ranger
+#exec xterm -e cmus
+exec xterm -T "Workspace 1"
+exec xterm -T "Workspace 2"
 
 #exec --no-startup-id i3-msg 'workspace $w1; \
     #exec xterm; workspace $w2' 
@@ -361,7 +359,15 @@ exec --no-startup-id i3-msg 'workspace $w6; \
     exec thunderbird; workspace $w1'
 
 # warmer display at night
-exec --no-startup-id redshift -l 49.8728:8.6512  -t 5500:3700
+exec --no-startup-id redshift -l 49.87:8.65  -t 5500:3700
+
+exec --no-startup-id blueman-applet 
+exec --no-startup-id ~/.local/bin/switch 1
+exec --no-startup-id dropbox
+exec_always --no-startup-id numlockx on
+exec_always --no-startup-id synclient TapButton1=1
+
+exec_always --no-startup-id xrdb ~/.Xresources
 
 # keyboard options
 exec_always --no-startup-id setxkbmap -layout 'us(altgr-intl)'

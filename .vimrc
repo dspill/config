@@ -24,8 +24,9 @@ Plugin 'WolfgangMehner/c-support'
 
 Plugin 'python-mode/python-mode'
 Plugin 'takac/vim-hardtime'
-let g:hardtime_default_on = 1
+let g:hardtime_default_on = 0
 let g:hardtime_maxcount = 2
+nnoremap <leader>ht :HardTimeToggle <CR>
 
 " Solarized {{{2
 Plugin 'altercation/vim-colors-solarized'
@@ -40,8 +41,6 @@ Plugin 'altercation/vim-colors-solarized'
 "nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
 "nnoremap <silent> <M-/> :TmuxNavigatePrevious<cr>
 
-" rhesaurus {{{2
-"Plugin 'Ron89/thesaurus_query.vim'
 
 " syntastic {{{2
 Plugin 'scrooloose/syntastic'
@@ -95,17 +94,13 @@ set pyxversion=3
 set encoding=utf-8
 
 if has("python3")
-    let g:deoplete#enable_at_startup = 1
-    if !exists('g:deoplete#omni#input_patterns')
-        let g:deoplete#omni#input_patterns = {}
-    endif
     " Deoplete
     set pyxversion=3
     set encoding=utf-8
     let g:deoplete#enable_at_startup = 1
-    if !exists('g:deoplete#omni#input_patterns')
-        let g:deoplete#omni#input_patterns = {}
-    endif
+    "if !exists('g:deoplete#omni#input_patterns')
+        "let g:deoplete#omni#input_patterns = {}
+    "endif
 
     if has('nvim')
         Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -125,7 +120,7 @@ if has("python3")
         autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
         autocmd FileType python setlocal omnifunc=python3complete#Complete
         autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-        "autocmd FileType tex setlocal omnifunc=texcomplete#Complete
+        autocmd FileType tex setlocal omnifunc=texcomplete#Complete
     augroup end
 
     " deoplete tab-complete
@@ -135,8 +130,8 @@ endif
 " snippets {{{2
 Plugin 'Shougo/neosnippet.vim'
 Plugin 'Shougo/neosnippet-snippets'
-Plugin 'honza/vim-snippets'
 Plugin 'Shougo/context_filetype.vim'
+Plugin 'honza/vim-snippets'
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -159,7 +154,7 @@ let g:indentLine_color_term=234
 "let g:indentLine_color_term=239
 "let g:indentLine_char="|"
 let g:indentLine_char="¦"
-let g:indentLine_indentLevel=20 
+let g:indentLine_indentLevel=20
 
 call vundle#end()
 
@@ -179,7 +174,7 @@ if has('gui_running')
 else
     set background=dark
 endif
-let g:solarized_visibility="low" 
+let g:solarized_visibility="low"
 
 filetype indent plugin on
 
@@ -276,7 +271,7 @@ set notimeout ttimeout ttimeoutlen=200
 " Use <F11> to toggle between 'paste' and 'nopaste'
 set pastetoggle=<F11>
 
-" Filetypes {{{1 
+" Filetypes {{{1
 au BufNewFile,BufRead *.plt,*.gpt,*.gnuplot setf gnuplot
 
 " Indentation options {{{2
@@ -341,6 +336,7 @@ nnoremap <leader>vr :tabnew ~/.vimrc <CR>
 nnoremap <leader>rr :source ~/.vimrc <CR>
 
 nnoremap <leader>nt :NERDTreeToggle <CR>
+nnoremap <leader>tw :TrimWhitespace <CR>
 
 "" folds
 nnoremap <ESC><ESC> za
@@ -368,8 +364,7 @@ nnoremap <Leader>ln :lnext<CR>
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 "cmap w!! !sudo tee > /dev/null %
 
-" Functions and Commands {{{1
-
+" Functions {{{1
 " preserve state of editor while running command
 function! Preserve(command)
     " Preparation: save last search, and cursor position.
@@ -389,6 +384,8 @@ function! TrimWhitespace()
     %s/\s\+$//e
     call setpos('.', l:save_cursor)
 endfunction
+
+" Commands {{{1
 command! TrimWhitespace call Preserve(TrimWhitespace())
 
 command! Dark :set background=dark
@@ -401,7 +398,8 @@ command! Submit :w <bar> !qsub %:p
 
 " Hacks {{{1
 " Rename tabs to show tab number.
-" (Based on http://stackoverflow.com/questions/5927952/whats-implementation-of-vims-default-tabline-function)
+" (Based on
+" http://stackoverflow.com/questions/5927952/whats-implementation-of-vims-default-tabline-function)
 if exists("+showtabline")
     function! MyTabLine()
         let s = ''

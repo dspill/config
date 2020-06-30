@@ -7,6 +7,9 @@ setlocal softtabstop=2
 " view linebreak etc
 setlocal list
 
+" add underscore as word boundary
+setlocal iskeyword-=_
+
 setlocal foldlevel=2
 let g:solarized_visibility="low"    "default value is normal
 
@@ -18,6 +21,7 @@ if exists("g:loaded_syntastic_plugin")
     let g:syntastic_tex_chktex_quiet_messages = {
                 \ "regex": [
                 \ 'You should enclose the previous parenthesis with',
+                \ 'Intersentence spacing .\+ should perhaps be used',
                 \ 'You should put punctuation outside inner math mode'
                 \],
                 \ "file":  ['preamble.*\.tex']}
@@ -77,11 +81,11 @@ let g:vimtex_indent_on_ampersands="0"
 
 " completion
 " deoplete
-if exists('g:deoplete#loaded_deoplete')
-    call deoplete#custom#var('omni', 'input_patterns', {
-                \ 'tex': g:vimtex#re#deoplete
-                \})
-endif
+"if exists('g:deoplete#loaded_deoplete')
+    "call deoplete#custom#var('omni', 'input_patterns', {
+                "\ 'tex': g:vimtex#re#deoplete
+                "\})
+"endif
 
 "youcompleteme
 if exists('g:ycm_semantic_triggers')

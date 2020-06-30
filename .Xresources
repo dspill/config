@@ -156,10 +156,14 @@ xterm*loginshell: true
 xterm*ScrollBar: off
 *XTerm*scrollBar: false
 xterm*rightScrollBar: false
-
 xterm*termName: xterm-256color
+
 xterm*utf8: true
-xterm*locale: true
+!xterm*locale: true
+xterm*locale: UTF-8
+xterm*utf8Fonts: 1
+xterm*utf8Title: true
+
 xterm*saveLines: 10240
 xterm*renderFont: True
 xterm*preeditType: Root
