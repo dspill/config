@@ -179,3 +179,13 @@ command translate js let googleTranslateCallback = document.createElement('scrip
 autocmd DocStart ^http(s?)://www.reddit.com js tri.excmds.urlmodify("-t", "www", "old")
 " Mosquito nets won't make themselves
 autocmd DocStart ^http(s?)://www.amazon.de js tri.excmds.urlmodify("-t", "www", "smile")
+
+"
+" Auto containers
+"
+containercreate google green 
+containercreate amazon orange 
+autocontain youtube\.com google
+autocontain youtube\.de google
+autocontain amazon\.com amazon
+autocontain amazon\.de amazon

@@ -337,9 +337,11 @@ bar {
 # use xprop to get class, title etc
 assign[title="Workspace 1"] $w1
 assign[title="Workspace 2"] $w2
+assign[class="firefox"] $w3
 assign[title="ranger"] $w4
 assign[title="cmus"] $w5
 assign[class="spotify"] $w5
+assign[class="thunderbird"] $w6
 
 exec xterm -e ranger
 #exec xterm -e cmus
@@ -358,12 +360,13 @@ exec --no-startup-id i3-msg 'workspace $w3; \
 exec --no-startup-id i3-msg 'workspace $w6; \
     exec thunderbird; workspace $w1'
 
-# warmer display at night
 exec --no-startup-id redshift -l 49.87:8.65  -t 5500:3700
-
 exec --no-startup-id blueman-applet 
 exec --no-startup-id ~/.local/bin/switch 1
 exec --no-startup-id dropbox
+exec --no-startup-id keepassxc
+exec --no-startup-id xsetroot -solid "#eee8d5"
+
 exec_always --no-startup-id numlockx on
 exec_always --no-startup-id synclient TapButton1=1
 
@@ -373,8 +376,6 @@ exec_always --no-startup-id xrdb ~/.Xresources
 exec_always --no-startup-id setxkbmap -layout 'us(altgr-intl)'
 exec_always --no-startup-id xmodmap ~/.Xmodmap
 
-# background
-exec --no-startup-id xsetroot -solid "#eee8d5"
-
 # hide mouse cursor when inactive
 exec_always --no-startup-id unclutter -idle 3 -root
+
