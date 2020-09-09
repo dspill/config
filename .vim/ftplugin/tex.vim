@@ -52,14 +52,29 @@ let g:vimtex_view_general_options_latexmk = '--unique'
 "let g:vimtex_view_method = 'zathura'
 
 " compiling
-let g:vimtex_latexmk_options="-pdf -pdflatex='pdflatex -file-line-error -shell-escape -synctex=1'"
+"let g:vimtex_latexmk_options="-pdf -pdflatex='pdflatex -file-line-error -shell-escape -synctex=1'"
+let g:vimtex_compiler_latexmk = {
+    \ 'build_dir' : '',
+    \ 'callback' : 1,
+    \ 'continuous' : 1,
+    \ 'executable' : 'latexmk',
+    \ 'hooks' : [],
+    \ 'options' : [
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \   '-pdf',
+    \   "-pdflatex='pdflatex -file-line-error -shell-escape -synctex=1'",
+    \ ],
+    \}
 let g:vimtex_imaps_leader="`"
 
 "folding
 let g:vimtex_fold_enabled=1
-let g:vimtex_fold_comments=1
 let  g:vimtex_fold_types = {
-            \ 'preamble' : {'enabled' : 0}
+            \ 'preamble' : {'enabled' : 0},
+            \ 'comments' : {'enabled' : 1},
             \ }
 setlocal fillchars="vert:|,fold:\\"
 setlocal fdm=expr
@@ -68,10 +83,11 @@ let g:vimtex_quickfix_enabled=1
 let g:vimtex_quickfix_mode=2
 "let g:vimtex_quickfix_autojump=1
 let g:vimtex_quickfix_open_on_warning=0
-let g:vimtex_quickfix_warnings = {
-            \ 'underfull' : 0,
-            \ 'packages' : {'default' : 0},
-            \}
+" Disable custom warnings based on regexp
+let g:vimtex_quickfix_ignore_filters = [
+      \ 'Marginpar on page',
+      \]
+
 let g:vimtex_quickfix_autoclose_after_keystrokes=2
 
 let maplocalleader="\\"

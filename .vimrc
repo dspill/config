@@ -20,6 +20,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 nnoremap <silent> <C-n> :set relativenumber!<cr>
 Plugin 'lervag/vimtex'
+let g:tex_flavor = 'latex'
 Plugin 'WolfgangMehner/c-support'
 
 Plugin 'python-mode/python-mode'

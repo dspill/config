@@ -27,6 +27,8 @@
 !.config/i3/i3blocks.conf
 !.config/i3/i3blocks
 !.config/i3/i3blocks/*
+!.config/firejail
+!.config/firejail/*
 
 !.i3
 !.i3/config
