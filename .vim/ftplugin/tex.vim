@@ -21,6 +21,7 @@ if exists("g:loaded_syntastic_plugin")
     let g:syntastic_tex_chktex_quiet_messages = {
                 \ "regex": [
                 \ 'You should enclose the previous parenthesis with',
+                \ 'You should perhaps use .\+ instead',
                 \ 'Intersentence spacing .\+ should perhaps be used',
                 \ 'You should put punctuation outside inner math mode'
                 \],
@@ -86,13 +87,14 @@ let g:vimtex_quickfix_open_on_warning=0
 " Disable custom warnings based on regexp
 let g:vimtex_quickfix_ignore_filters = [
       \ 'Marginpar on page',
+      \ 'LaTeX Warning: Font shape declaration has incorrect series value',
+      \ 'LaTeX Warning: Command \\under',
       \]
 
 let g:vimtex_quickfix_autoclose_after_keystrokes=2
 
 let maplocalleader="\\"
 let g:tex_conceal = ""
-
 let g:vimtex_indent_on_ampersands="0"
 
 " completion

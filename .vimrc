@@ -99,9 +99,6 @@ if has("python3")
     set pyxversion=3
     set encoding=utf-8
     let g:deoplete#enable_at_startup = 1
-    "if !exists('g:deoplete#omni#input_patterns')
-        "let g:deoplete#omni#input_patterns = {}
-    "endif
 
     if has('nvim')
         Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -111,7 +108,7 @@ if has("python3")
         Plugin 'roxma/vim-hug-neovim-rpc'
     endif
 
-    "autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
     " TODO problematic in command line
 
     augroup omnifuncs

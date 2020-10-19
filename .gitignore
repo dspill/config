@@ -40,4 +40,6 @@
 !.vim/ftplugin/*
 !.vim/spell/*
 
+!.gnupg/gpg.conf
+
 *~

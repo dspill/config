@@ -64,3 +64,6 @@ alias plot="plot.py -f "
 
 alias trim="ex +'bufdo!%s/\s\+$//e' -scxa"
 alias retab="ex +'set ts=2' +'bufdo retab' -scxa"
+
+alias thesis="cd ~/pckr166/thesis && gvim -c VimtexCompile thesis.tex; nohup
+zotero & exit"

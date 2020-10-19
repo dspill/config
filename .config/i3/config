@@ -337,10 +337,15 @@ bar {
 # use xprop to get class, title etc
 assign[title="Workspace 1"] $w1
 assign[title="Workspace 2"] $w2
+
 assign[class="firefox"] $w3
+assign[class="Zotero"] $w3
+
 assign[title="ranger"] $w4
+
 assign[title="cmus"] $w5
-assign[class="spotify"] $w5
+assign[class="spotify,Spotify"] $w5
+
 assign[class="thunderbird"] $w6
 
 exec xterm -e ranger
@@ -365,7 +370,10 @@ exec --no-startup-id blueman-applet
 exec --no-startup-id ~/.local/bin/switch 1
 exec --no-startup-id dropbox
 exec --no-startup-id keepassxc
-exec --no-startup-id xsetroot -solid "#eee8d5"
+exec --no-startup-id xautolock -locker 'i3lock -c 000000' -time 10
+# background
+#exec --no-startup-id xsetroot -solid "#eee8d5" 
+exec --no-startup-id xsetroot -solid i3wm.color0
 
 exec_always --no-startup-id numlockx on
 exec_always --no-startup-id synclient TapButton1=1

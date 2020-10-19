@@ -19,7 +19,7 @@ HISTCONTROL=ignoreboth
 
 # load keyboard settings
 #xmodmap ~/.Xmodmap
-[ -x /usr/bin/setxkbmap ] && setxkbmap -option caps:escape
+[ $DISPLAY ] && [ -x /usr/bin/setxkbmap ] && setxkbmap -option caps:escape
 
 # append to the history file, don't overwrite it
 shopt -s histappend
