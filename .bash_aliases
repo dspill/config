@@ -18,6 +18,7 @@ alias ttmux='tmux attach -t default || tmux new -s default'
 
 #alias gvim='$HOME/local/bin/gvim --servername VIM'
 alias gvim='gvim --servername VIM'
+alias nvim='nvim --listen /tmp/mynvimserver'
 #alias vim='vim --servername VIM'
 
 alias q='exit'

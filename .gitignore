@@ -18,19 +18,33 @@
 !.xlight
 
 !.config
+
 !.config/matplotlib
 !.config/matplotlib/matplotlibrc
 !.config/matplotlib/stylelib
 !.config/matplotlib/stylelib/*.mplstyle
+
 !.config/i3
 !.config/i3/config
 !.config/i3/i3blocks.conf
+
 !.config/i3/i3blocks
 !.config/i3/i3blocks/*
+
 !.config/firejail
 !.config/firejail/*
+
+!.config/ranger
+!.config/ranger/*
+
 !.config/nvim
 !.config/nvim/*
+
+!.config/nvim/ftplugin
+!.config/nvim/ftplugin/*
+
+!.config/nvim/spell
+!.config/nvim/spell/*
 
 !.i3
 !.i3/config
@@ -38,8 +52,8 @@
 
 !.vim
 !.vim/ftplugin
-!.vim/spell
 !.vim/ftplugin/*
+!.vim/spell
 !.vim/spell/*
 
 !.gnupg

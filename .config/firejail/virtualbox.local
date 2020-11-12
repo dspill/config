@@ -1,0 +1,2 @@
+rmdir ${HOME}/VirtualBox VMs
+whitelist ${HOME}/virtual
