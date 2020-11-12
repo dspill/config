@@ -183,7 +183,7 @@ bindsym $mod+Shift+less move container to output left
 bindsym $mod+Return exec $terminal
 
 # lock computer
-bindsym $mod+Shift+x exec i3lock -c 000000
+bindsym $mod+Shift+x exec "xset dpms force off && i3lock -c 000000"
 
 # kill focused window
 bindsym $mod+q kill
@@ -365,12 +365,12 @@ exec --no-startup-id i3-msg 'workspace $w3; \
 exec --no-startup-id i3-msg 'workspace $w6; \
     exec thunderbird; workspace $w1'
 
-exec --no-startup-id redshift -l 49.87:8.65  -t 5500:3700
+exec --no-startup-id redshift -l 49.9:8.65  -t 5500:3700
 exec --no-startup-id blueman-applet 
 exec --no-startup-id ~/.local/bin/switch 1
 exec --no-startup-id dropbox
 exec --no-startup-id keepassxc
-exec --no-startup-id xautolock -locker 'i3lock -c 000000' -time 10
+exec --no-startup-id xautolock -locker 'i3lock -c 000000' -time 15
 # background
 #exec --no-startup-id xsetroot -solid "#eee8d5" 
 exec --no-startup-id xsetroot -solid i3wm.color0

@@ -29,6 +29,8 @@
 !.config/i3/i3blocks/*
 !.config/firejail
 !.config/firejail/*
+!.config/nvim
+!.config/nvim/*
 
 !.i3
 !.i3/config
@@ -40,6 +42,7 @@
 !.vim/ftplugin/*
 !.vim/spell/*
 
+!.gnupg
 !.gnupg/gpg.conf
 
 *~
