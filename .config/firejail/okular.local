@@ -1,5 +1,8 @@
 noblacklist ${HOME}/pckr166
-# gvim needed for backward search: TODO repetition OK?
-private-bin kbuildsycoca4,kdeinit4,lpr,okular,gvim
+# gvim needed for backward search:
+private-bin kbuildsycoca4,kdeinit4,lpr,okular,gvim,nvim,nvr
 # Perl needed as well
-noblacklist /usr/lib/perl*
+#include /etc/firejail/allow-perl.inc
+#include /etc/firejail/allow-python3.inc
+#noblacklist /usr/lib/perl*
+#noblacklist /proc/sys/kernel/core_pattern

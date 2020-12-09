@@ -11,28 +11,25 @@ setlocal list
 setlocal iskeyword-=_
 
 setlocal foldlevel=2
-let g:solarized_visibility="low"    "default value is normal
+let b:solarized_visibility="low"    "default value is normal
 
 setlocal spell
 
-" syntastic {{{1
-if exists("g:loaded_syntastic_plugin")
-    let g:syntastic_tex_checkers = ['chktex']
-    let g:syntastic_tex_chktex_quiet_messages = {
-                \ "regex": [
-                \ 'You should enclose the previous parenthesis with',
-                \ 'You should perhaps use .\+ instead',
-                \ 'Intersentence spacing .\+ should perhaps be used',
-                \ 'You should put punctuation outside inner math mode'
-                \],
-                \ "file":  ['preamble.*\.tex']}
-endif
-                "\ 'You should enclose the previous', 
-                "\ 'You should perhaps use',
-                "\ 'vice', 'versa',
+" deoplete integration {{{1
+call deoplete#custom#var('omni', 'input_patterns', {
+      \ 'tex': g:vimtex#re#deoplete
+  \})
 
-" vimtex {{{1
+" ALE {{{1
+let b:ale_tex_chktex_options = '-I -n 3'
+let b:ale_fixers = [
+\   'latexindent',
+\   'remove_trailing_lines',
+\   'trim_whitespace',
+\]
+let b:ale_fix_on_save = 1
 
+" vimtex settings {{{1
 " indenting
 let g:vimtex_indent_delims = {
             \ 'open' : ['{', '[', '(', '\qty[', '\qty(', '\qty{'],
@@ -42,18 +39,11 @@ let g:vimtex_indent_delims = {
             \}
 
 " viewing
-"let g:vimtex_view_method = 'mupdf'
-"let g:vimtex_view_mupdf_send_keys = 'W' 
-"let g:vimtex_view_general_options = '--unique @pdf\#src:@line@tex'
-let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_general_viewer = 'firejail --noprofile okular'
 let g:vimtex_view_general_options = '--unique @pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
-"let g:vimtex_view_general_viewer = 'zathura'
-"let g:vimtex_view_method = 'zathura'
 
 " compiling
-"let g:vimtex_latexmk_options="-pdf -pdflatex='pdflatex -file-line-error -shell-escape -synctex=1'"
-let g:vimtex_compiler_latexmk = {
     \ 'build_dir' : '',
     \ 'callback' : 1,
     \ 'continuous' : 1,
@@ -81,7 +71,6 @@ setlocal fdm=expr
 
 let g:vimtex_quickfix_enabled=1
 let g:vimtex_quickfix_mode=2
-"let g:vimtex_quickfix_autojump=1
 let g:vimtex_quickfix_open_on_warning=0
 " Disable custom warnings based on regexp
 let g:vimtex_quickfix_ignore_filters = [
@@ -92,35 +81,14 @@ let g:vimtex_quickfix_ignore_filters = [
 
 let g:vimtex_quickfix_autoclose_after_keystrokes=2
 
-let maplocalleader="\\"
 let g:tex_conceal = ""
 let g:vimtex_indent_on_ampersands="0"
+" maps {{{2
+let maplocalleader="\\"
+nnoremap <buffer> <leader>co :copen<cr>G
+nnoremap <buffer> <leader>vc :VimtexClean<cr>
 
-" completion
-" deoplete
-"if exists('g:deoplete#loaded_deoplete')
-    "call deoplete#custom#var('omni', 'input_patterns', {
-                "\ 'tex': g:vimtex#re#deoplete
-                "\})
-"endif
-
-" neocomplete
-if exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
-    let g:neocomplete#sources#omni#input_patterns.tex =
-                \ '\v\\%('
-                \ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-                \ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
-                \ . '|hyperref\s*\[[^]]*'
-                \ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-                \ . '|%(include%(only)?|input)\s*\{[^}]*'
-                \ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-                \ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
-                \ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
-                \ . ')'
-endif
-
-" custom mappings {{{2
+" imaps {{{2
 call vimtex#imaps#add_map({
             \ 'lhs' : '^',
             \ 'rhs' : '^{',
@@ -148,5 +116,3 @@ call vimtex#imaps#add_map({
             \ 'leader' : '`',
             \ 'wrapper' : 'vimtex#imaps#wrap_math'
             \})
-
-nnoremap <buffer> <leader>co :copen<cr>G

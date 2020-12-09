@@ -53,8 +53,6 @@
 !.vim
 !.vim/ftplugin
 !.vim/ftplugin/*
-!.vim/spell
-!.vim/spell/*
 
 !.gnupg
 !.gnupg/gpg.conf

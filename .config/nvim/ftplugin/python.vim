@@ -5,8 +5,8 @@ set foldlevel=99
 nnoremap <buffer> "" :w <BAR> !python3 %:p<CR>
 
 if exists('g:pymode_lint')
-    let g:pymode_lint = 0
-    let g:pymode_lint_on_write = 0
+    let b:pymode_lint = 0
+    let b:pymode_lint_on_write = 0
 endif
 
 

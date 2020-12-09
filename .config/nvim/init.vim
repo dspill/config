@@ -5,8 +5,6 @@ set nocompatible
 " adding plug
 call plug#begin("~/.config/nvim/plugged")
   " Plugin Section
-" TODO syntastic, 'tmhedberg/SimpylFold.git'
-
 " {{{1 Plugins
 Plug 'VundleVim/Vundle.vim'
 Plug 'easymotion/vim-easymotion'
@@ -30,8 +28,16 @@ let g:hardtime_default_on = 0
 let g:hardtime_maxcount = 2
 nnoremap <leader>ht :HardTimeToggle <CR>
 
+Plug 'dense-analysis/ale'
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+nmap <leader>af <Plug>(ale_fix)
+"Plug 'neomake/neomake'
+
 " Folding {{{2
 Plug 'Konfekt/FastFold'
+
 let g:tex_fold_enabled=1
 "let g:vimsyn_folding='af'
 let g:vimsyn_folding='1'
@@ -65,7 +71,7 @@ let g:indentLine_char="¦"
 let g:indentLine_indentLevel=20
 
 " {{{2 deoplete
-if has("python3")
+"if has("python3")
     "set pyxversion=3
     "set encoding=utf-8
     if has('nvim')
@@ -79,15 +85,16 @@ if has("python3")
 
     autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
-    augroup omnifuncs
-        autocmd!
-        autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-        autocmd FileType python setlocal omnifunc=python3complete#Complete
-        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-        autocmd FileType tex setlocal omnifunc=texcomplete#Complete
-    augroup end
+    "augroup omnifuncs
+        "autocmd!
+        "autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+        "autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+        "autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+        "autocmd FileType python setlocal omnifunc=python3complete#Complete
+        "autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+        "autocmd FileType tex setlocal omnifunc=texcomplete#Complete
+        "autocmd FileType tex setlocal omnifunc=vimtex#complete#omnifunc
+    "augroup end
 
     " deoplete tab-complete
     inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -111,17 +118,18 @@ if has("python3")
                 "\    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
     "smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
                 "\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-endif
+"endif
 
 call plug#end()
 
-
-
-
+" Use ALE and also some plugin 'foobar' as completion sources for all code.
+"call deoplete#custom#option('sources', {'_': ['ale', 'buffer', 'tag'],})
 
 " Settings {{{1
 " Enable syntax highlighting
 syntax enable
+" lint on normal, read, write, insert after .5 sec
+"call neomake#configure#automake('nrwi', 500)
 
 " solarized color sheme
 colorscheme solarized
@@ -224,7 +232,7 @@ set notimeout ttimeout ttimeoutlen=200
 " Use <F11> to toggle between 'paste' and 'nopaste'
 set pastetoggle=<F11>
 
-" Filetypes {{{1
+" Filetypes {{{2
 au BufNewFile,BufRead *.plt,*.gpt,*.gnuplot setf gnuplot
 
 " Indentation options {{{2
@@ -263,7 +271,7 @@ if has("gui_running")
     endif
 endif
 
-" Mappings {{{1
+" Mappings {{{2
 " timeoutlen is used for mapping delays, and ttimeoutlen is used for key code
 " delays
 set timeoutlen=1000 ttimeoutlen=0
@@ -312,7 +320,7 @@ nnoremap <Leader>S :%s/\<<C-r><C-w>\>/
 " go next in list
 nnoremap <Leader>ln :lnext<CR>
 
-" Functions {{{1
+" Functions {{{2
 " preserve state of editor while running command
 function! Preserve(command)
     " Preparation: save last search, and cursor position.
@@ -333,7 +341,7 @@ function! TrimWhitespace()
     call setpos('.', l:save_cursor)
 endfunction
 
-" Commands {{{1
+" Commands {{{2
 command! TrimWhitespace call Preserve(TrimWhitespace())
 
 command! Dark :set background=dark
@@ -344,7 +352,7 @@ command! Xelatex :!xelatex %:p -synctex=1 -interaction=nonstopmode '%source'
 
 command! Submit :w <bar> !qsub %:p
 
-" Hacks {{{1
+" Hacks {{{2
 " Rename tabs to show tab number.
 " (Based on
 " http://stackoverflow.com/questions/5927952/whats-implementation-of-vims-default-tabline-function)

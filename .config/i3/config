@@ -108,6 +108,7 @@ bindsym XF86HomePage exec firefox
 bindsym $mod+F1 exec ~/.local/bin/switch 1
 bindsym $mod+F2 exec ~/.local/bin/switch 2
 bindsym $mod+F3 exec ~/.local/bin/switch 3
+bindsym $mod+F4 exec ~/.local/bin/tv
 
 # increase screen brightness
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 
@@ -263,15 +264,20 @@ mode "resize" {
 
 # {{{2 Media
 # increase sound volume
-bindsym XF86AudioRaiseVolume \
-    exec --no-startup-id ~/scripts/set_volume +5% 
+#bindsym XF86AudioRaiseVolume \
+    #exec --no-startup-id ~/scripts/set_volume +5% 
 # decrease sound volume
-bindsym XF86AudioLowerVolume \
-    exec --no-startup-id ~/scripts/set_volume -5%
-
+#bindsym XF86AudioLowerVolume \
+    #exec --no-startup-id ~/scripts/set_volume -5%
 # mute sound
-bindsym XF86AudioMute exec --no-startup-id ~/scripts/set_volume mute
-
+#bindsym XF86AudioMute exec --no-startup-id ~/scripts/set_volume mute
+# change volume or toggle mute
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ \
+    && pkill -RTMIN+1 i3blocks 
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- \
+    && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle \
+    && pkill -RTMIN+1 i3blocks 
 # media player control
 # find media keys like xmodmap -pke | grep -i blabla
 bindsym XF86AudioPlay exec cmus-remote --pause
@@ -329,6 +335,7 @@ bar {
         urgent_workspace               $yellow $yellow $baseB3
     }
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
+#status_command 2>/tmp/i3blocks.err /path/to/i3blocks -vvv -c /path/to/config | tee /tmp/i3blocks.out
     #status_command i3status
 }
 
