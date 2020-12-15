@@ -82,6 +82,7 @@ let g:vimtex_quickfix_ignore_filters = [
 let g:vimtex_quickfix_autoclose_after_keystrokes=2
 
 let g:tex_conceal = ""
+set conceallevel=0
 let g:vimtex_indent_on_ampersands="0"
 " maps {{{2
 let maplocalleader="\\"

@@ -2,76 +2,24 @@
 filetype off
 set nocompatible
 
-" adding plug
-call plug#begin("~/.config/nvim/plugged")
-  " Plugin Section
 " {{{1 Plugins
-Plug 'VundleVim/Vundle.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'PotatoesMaster/i3-vim-syntax'
+call plug#begin("~/.config/nvim/plugged")
+Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdcommenter'
-Plug 'vlaadbrain/gnuplot.vim'
-Plug 'tridactyl/vim-tridactyl'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
-Plug 'jeffkreeftmeijer/vim-numbertoggle'
-nnoremap <silent> <C-n> :set relativenumber!<cr>
+" vim-indent-guides {{{2
+Plug 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_enable_on_vim_startup=1
+" 2}}}
+" {{{2 vimtex
 Plug 'lervag/vimtex'
 let g:tex_flavor = 'latex'
-Plug 'WolfgangMehner/c-support'
-Plug 'altercation/vim-colors-solarized'
-Plug 'python-mode/python-mode'
-Plug 'takac/vim-hardtime'
-let g:hardtime_default_on = 0
-let g:hardtime_maxcount = 2
-nnoremap <leader>ht :HardTimeToggle <CR>
-
-Plug 'dense-analysis/ale'
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-nmap <leader>af <Plug>(ale_fix)
-"Plug 'neomake/neomake'
-
-" Folding {{{2
-Plug 'Konfekt/FastFold'
-
-let g:tex_fold_enabled=1
-"let g:vimsyn_folding='af'
-let g:vimsyn_folding='1'
-let g:xml_syntax_folding = 1
-let g:javaScript_fold = 1
-let g:ruby_fold = 1
-let g:sh_fold_enabled= 7
-let g:php_folding = 1
-let g:perl_fold = 1
-
-function! NeatFoldText() "{{{3
-    let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
-    let lines_count = v:foldend - v:foldstart + 1
-    let lines_count_text = '| ' . printf("%10s", lines_count . ' lines') . ' |'
-    let foldchar = matchstr(&fillchars, 'fold:\zs.')
-    let foldtextstart = strpart('+' . repeat(foldchar, v:foldlevel*2) . line, 0, (winwidth(0)*2)/3)
-    let foldtextend = lines_count_text . repeat(foldchar, 8)
-    let foldtextlength = strlen(substitute(foldtextstart . foldtextend, '.', 'x', 'g')) + &foldcolumn
-    return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
-endfunction
-set foldtext=NeatFoldText()
-" }}}3
-
-" indentline {{{2
-Plug 'Yggdroot/indentLine'
-let g:indentLine_enabled=1
-let g:indentLine_color_term=234
-"let g:indentLine_color_term=239
-"let g:indentLine_char="|"
-let g:indentLine_char="¦"
-let g:indentLine_indentLevel=20
-
+" 2}}}
 " {{{2 deoplete
-"if has("python3")
+if has("python3")
     "set pyxversion=3
     "set encoding=utf-8
     if has('nvim')
@@ -84,17 +32,6 @@ let g:indentLine_indentLevel=20
     let g:deoplete#enable_at_startup = 1
 
     autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
-    "augroup omnifuncs
-        "autocmd!
-        "autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-        "autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-        "autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-        "autocmd FileType python setlocal omnifunc=python3complete#Complete
-        "autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-        "autocmd FileType tex setlocal omnifunc=texcomplete#Complete
-        "autocmd FileType tex setlocal omnifunc=vimtex#complete#omnifunc
-    "augroup end
 
     " deoplete tab-complete
     inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -112,17 +49,26 @@ let g:indentLine_indentLevel=20
 
     " SuperTab like snippets' behavior.
     " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-    "imap <expr><TAB>
-                "\ pumvisible() ? "\<C-n>" :
-                "\ neosnippet#expandable_or_jumpable() ?
-                "\    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-    "smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-                "\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-"endif
+    imap <expr><TAB>
+                \ pumvisible() ? "\<C-n>" :
+                \ neosnippet#expandable_or_jumpable() ?
+                \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+    smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+                \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+endif
+" 2}}}
+" {{{2 ALE
+Plug 'dense-analysis/ale'
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+nmap <leader>af <Plug>(ale_fix)
+" 2}}}
 
 call plug#end()
+" 1}}}
 
-" Use ALE and also some plugin 'foobar' as completion sources for all code.
+" Use ALE and also some plugin as completion sources for all code.
 "call deoplete#custom#option('sources', {'_': ['ale', 'buffer', 'tag'],})
 
 " Settings {{{1
@@ -130,6 +76,10 @@ call plug#end()
 syntax enable
 " lint on normal, read, write, insert after .5 sec
 "call neomake#configure#automake('nrwi', 500)
+
+"call serverstart('/tmp/mynvimserver')
+
+set conceallevel=0
 
 " solarized color sheme
 colorscheme solarized
@@ -141,6 +91,9 @@ endif
 let g:solarized_visibility="low"
 
 filetype indent plugin on
+
+" show relative line numbers
+set relativenumber
 
 " always at least one line visible when scrolling
 set scrolloff=1
@@ -163,7 +116,7 @@ set directory=$HOME/.backup/vim/swap//,.,/VAR/TMP/,/TMP
 set backupdir=$HOME/.backup/vim/backup//,.,/var/tmp/,/tmp
 set undodir=$HOME/.backup/vim/undo//,.,/var/tmp/,/tmp
 
-set hidden
+"set hidden
 " Note that not everyone likes working this way (with the hidden option).
 " Alternatives include using tabs or split windows instead of re-using the same
 " window as mentioned above, and/or either of the following options:
