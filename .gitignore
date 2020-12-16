@@ -46,6 +46,9 @@
 !.config/nvim/spell
 !.config/nvim/spell/*
 
+!.config/nvim/thesaurus
+!.config/nvim/thesaurus/*
+
 !.i3
 !.i3/config
 !.i3/i3blocks.conf

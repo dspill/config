@@ -13,6 +13,10 @@ Plug 'tpope/vim-fugitive'
 " vim-indent-guides {{{2
 Plug 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_auto_colors = 1
+let g:indent_guides_color_change_percent = 50
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 " 2}}}
 " {{{2 vimtex
 Plug 'lervag/vimtex'
@@ -68,9 +72,6 @@ nmap <leader>af <Plug>(ale_fix)
 call plug#end()
 " 1}}}
 
-" Use ALE and also some plugin as completion sources for all code.
-"call deoplete#custom#option('sources', {'_': ['ale', 'buffer', 'tag'],})
-
 " Settings {{{1
 " Enable syntax highlighting
 syntax enable
@@ -81,7 +82,6 @@ syntax enable
 
 set conceallevel=0
 
-" solarized color sheme
 colorscheme solarized
 if has('gui_running')
     set background=light
