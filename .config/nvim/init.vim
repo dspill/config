@@ -4,12 +4,23 @@ set nocompatible
 
 " {{{1 Plugins
 call plug#begin("~/.config/nvim/plugged")
+Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdcommenter'
+" {{{2 Tim Pope plugins
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
+" 2}}}
+" thesaurus_query {{{2
+Plug 'ron89/thesaurus_query.vim'
+let g:tq_map_keys=0
+nnoremap <unique> <Leader>th :ThesaurusQueryReplaceCurrentWord<CR>
+vnoremap <unique> <Leader>th "ky:ThesaurusQueryReplace <C-r>k<CR>
+nnoremap <LocalLeader>th :ThesaurusQueryReplaceCurrentWord<CR>
+vnoremap <LocalLeader>th "ky:ThesaurusQueryReplace <C-r>k<CR>
+" 2}}}
 " vim-indent-guides {{{2
 Plug 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_enable_on_vim_startup=1
@@ -20,6 +31,7 @@ let g:indent_guides_color_change_percent = 50
 " 2}}}
 " {{{2 vimtex
 Plug 'lervag/vimtex'
+let g:vimtex_loaded = 1
 let g:tex_flavor = 'latex'
 " 2}}}
 " {{{2 deoplete
@@ -68,19 +80,12 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 nmap <leader>af <Plug>(ale_fix)
 " 2}}}
-
 call plug#end()
 " 1}}}
 
 " Settings {{{1
 " Enable syntax highlighting
 syntax enable
-" lint on normal, read, write, insert after .5 sec
-"call neomake#configure#automake('nrwi', 500)
-
-"call serverstart('/tmp/mynvimserver')
-
-set conceallevel=0
 
 colorscheme solarized
 if has('gui_running')

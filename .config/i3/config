@@ -99,10 +99,17 @@ workspace $ws7 output $monitor_2
 workspace $ws8 output $monitor_2
 workspace $ws9 output $monitor_2
 
+# scratchpad
+bindsym $mod+m move scratchpad
+bindsym $mod+o scratchpad show
+
 # {{{1 Shortcuts
 # use xev to find keycodes
 # {{{2 Custom
 bindsym XF86HomePage exec firefox
+
+# take screenshot by selecting rectangle
+bindsym --release Print exec scrot -bse 'mv $f ~/screenshot_%Y-%m-%d-%T_$wx$h.png'
 
 # switch monitors
 bindsym $mod+F1 exec ~/.local/bin/switch 1
@@ -344,31 +351,20 @@ bar {
 # use xprop to get class, title etc
 assign[title="Workspace 1"] $w1
 assign[title="Workspace 2"] $w2
-
 assign[class="firefox"] $w3
 assign[class="Zotero"] $w3
-
 assign[title="ranger"] $w4
-
 assign[title="cmus"] $w5
-assign[class="spotify,Spotify"] $w5
-
+assign[class="(?i)spotify"] $w5
+assign[title="Spotify Premium"] $w5
 assign[class="thunderbird"] $w6
 
+# fixed workspaces
 exec xterm -e ranger
-#exec xterm -e cmus
 exec xterm -T "Workspace 1"
 exec xterm -T "Workspace 2"
-
-#exec --no-startup-id i3-msg 'workspace $w1; \
-    #exec xterm; workspace $w2' 
-
-#exec --no-startup-id i3-msg 'workspace $w2; \
-    #exec xterm; workspace $w1' 
-
 exec --no-startup-id i3-msg 'workspace $w3; \
     exec firefox; workspace $w1' 
-
 exec --no-startup-id i3-msg 'workspace $w6; \
     exec thunderbird; workspace $w1'
 

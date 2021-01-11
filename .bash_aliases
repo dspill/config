@@ -18,8 +18,8 @@ alias ttmux='tmux attach -t default || tmux new -s default'
 
 #alias gvim='$HOME/local/bin/gvim --servername VIM'
 alias gvim='gvim --servername VIM'
-alias vim='nvim --listen /tmp/mynvimserver'
-alias nvim='nvim --listen /tmp/mynvimserver'
+alias nvim='NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim'
+alias vim='NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim'
 
 alias q='exit'
 alias c='clear'
@@ -66,4 +66,5 @@ alias plot="plot.py -f "
 alias trim="ex +'bufdo!%s/\s\+$//e' -scxa"
 alias retab="ex +'set ts=2' +'bufdo retab' -scxa"
 
-alias thesis="nohup zotero & cd ~/pckr166/thesis && nvim --listen /tmp/mynvimserver -c VimtexCompile thesis.tex"
+alias thesis="nohup zotero & cd ~/pckr166/thesis \
+    && NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim -c VimtexCompile thesis.tex"
