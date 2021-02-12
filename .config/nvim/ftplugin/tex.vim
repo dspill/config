@@ -24,7 +24,9 @@ endif
 
 " ALE {{{1
 if g:loaded_ale
-    let b:ale_tex_chktex_options = '-I -n 3'
+    " -n mutes chktex warning #
+      let g:ale_linters_ignore = {'tex': ['lacheck']}
+    let b:ale_tex_chktex_options = '-I -n 3 11'
     let b:ale_fixers = [
                 \   'latexindent',
                 \   'remove_trailing_lines',

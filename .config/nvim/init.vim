@@ -7,6 +7,11 @@ call plug#begin("~/.config/nvim/plugged")
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdcommenter'
+" {{{2 hardtime
+"Plug 'takac/vim-hardtime'
+""let g:hardtime_default_on = 1
+"let g:hardtime_allow_different_key = 1
+"let g:hardtime_maxcount = 2
 " {{{2 Tim Pope plugins
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -16,16 +21,17 @@ Plug 'tpope/vim-fugitive'
 " thesaurus_query {{{2
 Plug 'ron89/thesaurus_query.vim'
 let g:tq_map_keys=0
-nnoremap <unique> <Leader>th :ThesaurusQueryReplaceCurrentWord<CR>
-vnoremap <unique> <Leader>th "ky:ThesaurusQueryReplace <C-r>k<CR>
-nnoremap <LocalLeader>th :ThesaurusQueryReplaceCurrentWord<CR>
-vnoremap <LocalLeader>th "ky:ThesaurusQueryReplace <C-r>k<CR>
+"nnoremap <unique> <Leader>ot :ThesaurusQueryReplaceCurrentWord<CR>
+"vnoremap <unique> <Leader>ot "ky:ThesaurusQueryReplace <C-r>k<CR>
+nnoremap <LocalLeader>ot :ThesaurusQueryReplaceCurrentWord<CR>
+vnoremap <LocalLeader>ot "ky:ThesaurusQueryReplace <C-r>k<CR>
 " 2}}}
 " vim-indent-guides {{{2
 Plug 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_auto_colors = 1
-let g:indent_guides_color_change_percent = 50
+let g:indent_guides_color_change_percent = 20
+"let g:indent_guides_auto_colors = 0
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 " 2}}}

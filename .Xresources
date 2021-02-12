@@ -3,64 +3,7 @@
 !
 ! {{{1 Solarized Color Sheme
 ! Solarized color scheme for the X Window System
-!
 ! http://ethanschoonover.com/solarized
-! Common
-!#define S_yellow #b58900
-!#define S_orange #cb4b16
-!#define S_red #dc322f
-!#define S_magenta #d33682
-!#define S_violet #6c71c4
-!#define S_blue #268bd2
-!#define S_cyan #2aa198
-!#define S_green #859900
-!! Dark
-!!#define S_base03 #002b36
-!!#define S_base02 #073642
-!!#define S_base01 #586e75
-!!#define S_base00 #657b83
-!!#define S_base0 #839496
-!!#define S_base1 #93a1a1
-!!#define S_base2 #eee8d5
-!!#define S_base3 #fdf6e3
-!! Light
-!#define S_base03 #fdf6e3
-!#define S_base02 #eee8d5
-!#define S_base01 #93a1a1
-!#define S_base00 #839496
-!#define S_base0 #657b83
-!#define S_base1 #586e75
-!#define S_base2 #073642
-!!#define S_base3 #002b36
-!! To only apply colors to your terminal, for example, prefix
-!! the color assignment statement with its name. Example:
-!!
-!! xterm*background: S_base03
-!*background: S_base03
-!*foreground: S_base0
-!*fading: 40
-!*fadeColor: S_base03
-!*cursorColor: S_base1
-!*pointerColorBackground: S_base01
-!*pointerColorForeground: S_base1
-!*color0: S_base02
-!*color1: S_red
-!*color2: S_green
-!*color3: S_yellow
-!*color4: S_blue
-!*color5: S_magenta
-!*color6: S_cyan
-!*color7: S_base2
-!*color9: S_orange
-!*color8: S_base03
-!*color10: S_base01
-!*color11: S_base00
-!*color12: S_base0
-!*color13: S_violet
-!*color14: S_base1
-!*color15: S_base3
-
-!! drop in Solarized colorscheme for Xresources/Xdefaults
 
 !!SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
 !!--------- ------- ---- -------  ----------- ---------- ----------- -----------
@@ -81,22 +24,7 @@
 !!cyan      #2aa198  6/6 cyan      37 #00afaf 60 -35 -05  42 161 152 175  74  63
 !!green     #859900  2/2 green     64 #5f8700 60 -20  65 133 153   0  68 100  60
 
-#define S_base03        #fdf6e3
-#define S_base02        #eee8d5
-#define S_base01        #93a1a1
-#define S_base00        #839496
-#define S_base0         #657b83
-#define S_base1         #586e75
-#define S_base2         #073642
-
-!#define S_base03        #002b36
-!#define S_base02        #073642
-!#define S_base01        #586e75
-!#define S_base00        #657b83
-!#define S_base0         #839496
-!#define S_base1         #93a1a1
-!#define S_base2         #eee8d5
-
+! solarized both
 #define S_base3         #fdf6e3
 #define S_yellow        #b58900
 #define S_orange        #cb4b16
@@ -106,6 +34,24 @@
 #define S_blue          #268bd2
 #define S_cyan          #2aa198
 #define S_green         #859900
+
+! solarized light
+!#define S_base03        #fdf6e3
+!#define S_base02        #eee8d5
+!#define S_base01        #93a1a1
+!#define S_base00        #839496
+!#define S_base0         #657b83
+!#define S_base1         #586e75
+!#define S_base2         #073642
+
+! solarized dark
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
 
 *background:            S_base03
 *foreground:            S_base00
@@ -183,4 +129,29 @@ xterm*metaSendsEscape: true
 xterm*VT100.translations: #override \
     Ctrl Shift <KeyPress> C: copy-selection(CLIPBOARD) \n\
     Ctrl Shift <KeyPress> V: insert-selection(CLIPBOARD)
+! 1}}}
+
+! {{{ rofi settings
+!rofi.location:          6
+!rofi.color-enabled:     true
+!rofi.color-window:      argb:ee0F3B5F, S_base0, S_base0
+!rofi.color-normal:      argb:00111111, #E5DBCF, argb:00111111, #CC9752, #0F3B5F
+!rofi.color-urgent:      argb:00111111, S_yellow, argb:00111111, S_yellow, S_yellow
+!rofi.color-active:      argb:00111111, #70a16c, argb:00111111, #70a16c, #0F3B5F
+!rofi.key-combi:         Alt-F3
+!rofi.separator-style:   dash
+!rofi.fullscreen:        false
+!rofi.padding:           2
+!rofi.hide-scrollbar:    true
+!rofi.line-margin:       5
+!rofi.fake-transparency: true
+!rofi.yoffset:           -20
+!rofi.xoffset:           0
+!rofi.width:             80
+!rofi.lines:             4
+!rofi.terminal:          xterm
+!rofi.font:              Inconsolata 18
+!rofi.fuzzy:             true
+!rofi.run-command:       xterm -e "{cmd}"
+!rofi.opacity:           75
 
