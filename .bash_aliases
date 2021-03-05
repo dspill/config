@@ -68,3 +68,5 @@ alias retab="ex +'set ts=2' +'bufdo retab' -scxa"
 
 alias thesis="nohup zotero & cd ~/pckr166/thesis \
     && NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim -c VimtexCompile thesis.tex"
+
+alias spotify="spotify --no-zygote"

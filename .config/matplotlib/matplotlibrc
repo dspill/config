@@ -203,7 +203,7 @@ backend      : TkAgg
 # settings for axes and ticks. Special text sizes can be defined
 # relative to font.size, using the following values: xx-small, x-small,
 # small, medium, large, x-large, xx-large, larger, or smaller
-#font.size           : 10.0
+font.size           : 10.0
 #font.serif          : DejaVu Serif, Bitstream Vera Serif, New Century Schoolbook, Century Schoolbook L, Utopia, ITC Bookman, Bookman, Nimbus Roman No9 L, Times New Roman, Times, Palatino, Charter, serif
 #font.sans-serif     : DejaVu Sans, Bitstream Vera Sans, Lucida Grande, Verdana, Geneva, Lucid, Arial, Helvetica, Avant Garde, sans-serif
 #font.cursive        : Apple Chancery, Textile, Zapf Chancery, Sand, Script MT, Felipa, cursive
@@ -218,6 +218,9 @@ backend      : TkAgg
 #text.color          : black
 
 ### LaTeX customizations. See http://wiki.scipy.org/Cookbook/Matplotlib/UsingTex
+text.usetex  : True
+#font.family : serif TODO font family not found
+font.serif  : cm
 #text.usetex         : False  # use latex for all text handling. The following fonts
                               # are supported through the usual rc parameter settings:
                               # new century schoolbook, bookman, times, palatino,
@@ -279,9 +282,9 @@ backend      : TkAgg
 #mathtext.fontset : dejavusans # Should be 'dejavusans' (default),
                                # 'dejavuserif', 'cm' (Computer Modern), 'stix',
                                # 'stixsans' or 'custom'
-#mathtext.fallback_to_cm : True  # When True, use symbols from the Computer Modern
-                                 # fonts when a symbol can not be found in one of
-                                 # the custom math fonts.
+mathtext.fontset: cm
+mathtext.rm : serif
+mathtext.fallback : cm  
 
 #mathtext.default : it # The default font to use for math.
                        # Can be any of the LaTeX font names, including
@@ -425,6 +428,7 @@ axes.labelsize      : 10  # fontsize of the x any y labels
 #legend.scatterpoints : 1        # number of scatter points
 #legend.markerscale   : 1.0      # the relative size of legend markers vs. original
 #legend.fontsize      : medium
+legend.fontsize      : 10
 # Dimensions as fraction of fontsize:
 #legend.borderpad     : 0.4      # border whitespace
 #legend.labelspacing  : 0.5      # the vertical space between the legend entries
@@ -433,6 +437,7 @@ axes.labelsize      : 10  # fontsize of the x any y labels
 #legend.handletextpad : 0.8      # the space between the legend line and legend text
 #legend.borderaxespad : 0.5      # the border between the axes and legend edge
 #legend.columnspacing : 2.0      # column separation
+legend.columnspacing : 1.5      # column separation
 
 ### FIGURE
 # See http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure
@@ -521,6 +526,7 @@ axes.labelsize      : 10  # fontsize of the x any y labels
 #savefig.facecolor   : white    # figure facecolor when saving
 #savefig.edgecolor   : white    # figure edgecolor when saving
 #savefig.format      : png      # png, ps, pdf, svg
+savefig.bbox        : tight
 #savefig.bbox        : standard # 'tight' or 'standard'.
                                 # 'tight' is incompatible with pipe-based animation
                                 # backends but will workd with temporary file based ones:

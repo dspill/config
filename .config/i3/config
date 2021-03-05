@@ -135,6 +135,12 @@ bindsym Control+mod1+b exec ~/local/bin/connect_bluetooth
 # test
 bindsym XF86Calculator exec ~/scripts/test.sh
 
+# mouse buttons
+#bindsym button6 move left
+#bindsym button7 move right
+#bindsym button8 move left
+#bindsym button0 move right
+
 # {{{2 System
 # switch to workspace
 bindsym $mod+1 workspace $w1
