@@ -4,6 +4,9 @@ set nocompatible
 
 " {{{1 Plugins
 call plug#begin("~/.config/nvim/plugged")
+Plug 'rhysd/vim-grammarous'
+nnoremap <leader>gc :GrammarousCheck<cr>
+nnoremap <leader>gr :GrammarousReset<cr>
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdcommenter'
@@ -119,7 +122,7 @@ set nospell
 " textwidth for automatic linewrap. disable with: :set fo-=t
 set textwidth=79
 set formatoptions=tcq
-set colorcolumn=79
+set colorcolumn=+1
 
 " backup options
 set backup

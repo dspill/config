@@ -1,4 +1,9 @@
 " vim: foldmethod=marker:
+"
+" textwidth for automatic linewrap. disable with: :set fo-=t
+setlocal textwidth=0
+setlocal formatoptions=cq
+setlocal colorcolumn=""
 
 " set indentation width
 setlocal shiftwidth=2
@@ -24,15 +29,15 @@ endif
 
 " ALE {{{1
 if g:loaded_ale
+    let g:ale_linters_ignore = {'tex': ['lacheck']}
     " -n mutes chktex warning #
-      let g:ale_linters_ignore = {'tex': ['lacheck']}
     let b:ale_tex_chktex_options = '-I -n 3 11'
     let b:ale_fixers = [
                 \   'latexindent',
                 \   'remove_trailing_lines',
                 \   'trim_whitespace',
                 \]
-    let b:ale_fix_on_save = 1
+    let b:ale_fix_on_save = 0
 endif
 
 " vimtex settings {{{1
@@ -95,7 +100,7 @@ if g:vimtex_loaded
     " maps {{{2
     let maplocalleader="\\"
     nnoremap <buffer> <leader>co :copen<cr>G
-    nnoremap <buffer> <leader>vc :VimtexClean<cr>
+    nnoremap <buffer> <leader>ls :VimtexCompileSS<cr>
 
     " imaps {{{2
     call vimtex#imaps#add_map({

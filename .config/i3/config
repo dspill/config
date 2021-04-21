@@ -112,10 +112,18 @@ bindsym XF86HomePage exec firefox
 bindsym --release Print exec scrot -bse 'mv $f ~/screenshot_%Y-%m-%d-%T_$wx$h.png'
 
 # switch monitors
+# HDMI only (smasung)
 bindsym $mod+F1 exec ~/.local/bin/switch 1
+# LVDS only
 bindsym $mod+F2 exec ~/.local/bin/switch 2
+# both
 bindsym $mod+F3 exec ~/.local/bin/switch 3
-bindsym $mod+F4 exec ~/.local/bin/tv
+# vga beamer
+bindsym $mod+F4 exec ~/.local/bin/switch 4
+# hdmi beamer
+bindsym $mod+F5 exec ~/.local/bin/switch 5
+# hdmi tv
+bindsym $mod+F6 exec ~/.local/bin/switch 6
 
 # increase screen brightness
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 
@@ -388,7 +396,7 @@ exec_always --no-startup-id xrdb ~/.Xresources
 
 # keyboard options
 exec_always --no-startup-id setxkbmap -layout 'us(altgr-intl)'
-exec_always --no-startup-id xmodmap ~/.Xmodmap
+#exec_always --no-startup-id xmodmap ~/.Xmodmap
 
 # hide mouse cursor when inactive
 exec_always --no-startup-id unclutter -idle 3 -root

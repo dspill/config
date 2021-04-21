@@ -1,5 +1,4 @@
 ! get keycodes with xev
 ! Load file with xmodmap ~/.Xmodmap
-
 clear lock
 keycode 66 = Escape
